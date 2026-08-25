@@ -941,6 +941,61 @@ button.pill:hover{ border-color: var(--ink); }
 }
 
 /* ==========================================================================
+   Página de marcas — tarjetas con foto (fondo oscuro)
+   ========================================================================== */
+.brand-showcase{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+}
+.brand-showcase-card{
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  transition: background var(--ease), transform var(--ease);
+}
+.brand-showcase-card:hover{ background: rgba(255,255,255,.1); transform: translateY(-3px); }
+.brand-showcase-media{
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-5);
+}
+.brand-showcase-media img{
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 28px rgba(0,0,0,.4));
+}
+.brand-showcase-body{ padding: var(--sp-5) var(--sp-5) var(--sp-5); }
+.brand-showcase-body h3{ font-size: 19px; color: #fff; }
+.brand-showcase-body .origin{
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.5);
+  font-weight: 700;
+  margin-top: 4px;
+}
+.brand-showcase-body p:not(.origin){
+  font-size: 13px;
+  color: rgba(255,255,255,.68);
+  margin-top: var(--sp-3);
+}
+.brand-showcase-body .pill{ margin-top: var(--sp-4); }
+
+@media (max-width: 1024px){
+  .brand-showcase{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px){
+  .brand-showcase{ grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
    Producto destacado
    ========================================================================== */
 .feature-grid{
