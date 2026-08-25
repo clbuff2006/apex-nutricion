@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="es-VE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Nutrición — Nutrición deportiva de las cinco marcas líderes en Venezuela</title>
+<meta name="description" content="Apex Nutrición reúne en un solo lugar los geles, hidratación, proteína y barras de Going Nutrición, Probar, Skratch Labs, SaltStick y Honey Stinger. Despacho en 24–48h en Venezuela.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=14">
+</head>
+<body>
+
+<!-- ============ Barra de anuncio ============ -->
+<div class="announce">
+  <p>Envío gratis desde <strong>$30</strong> · Despacho en <strong>24–48h</strong> en Caracas, Valencia y Maracaibo</p>
+</div>
+
+<!-- ============ Header ============ -->
+<header class="site-header">
+  <div class="container">
+
+    <button class="menu-toggle icon-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <a href="index.html" class="logo" aria-label="Apex Nutrición — Inicio">
+      <span class="logo-name">Apex Nutrición</span>
+      <span class="logo-tag">Nutrición Deportiva</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">HIDRATACIÓN
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html?cat=hidratacion">Polvos</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Cápsulas</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Masticables</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Alto sodio</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Uso diario</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">CARBOHIDRATOS
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html?cat=carbohidratos">Geles</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Gomitas</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Waffles</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Barras</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Con cafeína</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Sin cafeína</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">PROTEÍNA
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html?cat=proteina">Polvos</a></li>
+                <li><a href="categoria.html?cat=proteina">Barras</a></li>
+                <li><a href="categoria.html?cat=proteina">Recuperación</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">POR DEPORTE
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html">Running</a></li>
+                <li><a href="categoria.html">Ciclismo</a></li>
+                <li><a href="categoria.html">Triatlón</a></li>
+                <li><a href="categoria.html">Trail</a></li>
+                <li><a href="categoria.html">Gimnasio</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="marcas.html">MARCAS</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="guias.html">GUÍAS</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <form class="search-form" role="search" action="busqueda.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <label for="search-input" class="visually-hidden">Buscar productos</label>
+        <input id="search-input" type="search" name="q" placeholder="Buscar geles, proteína…">
+      </form>
+      <a class="icon-btn" href="#" aria-label="Mi cuenta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      </a>
+      <a class="icon-btn cart-btn" href="carrito.html" aria-label="Carrito de compras">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/><path d="M2.5 3h2.6l2.4 12.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6l1.5-8.2H6"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Navegación móvil">
+    <form class="search-form" role="search" action="busqueda.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <label for="search-input-mobile" class="visually-hidden">Buscar productos</label>
+      <input id="search-input-mobile" type="search" name="q" placeholder="Buscar geles, proteína…">
+    </form>
+
+    <details>
+      <summary>HIDRATACIÓN <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html?cat=hidratacion">Polvos</a>
+        <a href="categoria.html?cat=hidratacion">Cápsulas</a>
+        <a href="categoria.html?cat=hidratacion">Masticables</a>
+        <a href="categoria.html?cat=hidratacion">Alto sodio</a>
+        <a href="categoria.html?cat=hidratacion">Uso diario</a>
+      </div>
+    </details>
+    <details>
+      <summary>CARBOHIDRATOS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html?cat=carbohidratos">Geles</a>
+        <a href="categoria.html?cat=carbohidratos">Gomitas</a>
+        <a href="categoria.html?cat=carbohidratos">Waffles</a>
+        <a href="categoria.html?cat=carbohidratos">Barras</a>
+        <a href="categoria.html?cat=carbohidratos">Con cafeína</a>
+        <a href="categoria.html?cat=carbohidratos">Sin cafeína</a>
+      </div>
+    </details>
+    <details>
+      <summary>PROTEÍNA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html?cat=proteina">Polvos</a>
+        <a href="categoria.html?cat=proteina">Barras</a>
+        <a href="categoria.html?cat=proteina">Recuperación</a>
+      </div>
+    </details>
+    <details>
+      <summary>POR DEPORTE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html">Running</a>
+        <a href="categoria.html">Ciclismo</a>
+        <a href="categoria.html">Triatlón</a>
+        <a href="categoria.html">Trail</a>
+        <a href="categoria.html">Gimnasio</a>
+      </div>
+    </details>
+    <a class="mobile-plain" href="marcas.html">MARCAS</a>
+    <a class="mobile-plain" href="guias.html">GUÍAS</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ Héroe: carrusel ============ -->
+  <section class="hero-carousel">
+
+    <div class="hero-slide active">
+      <div class="container">
+        <div class="hero-copy">
+          <p class="eyebrow">Cinco marcas · un solo despacho</p>
+          <h1 class="h-46">Todo tu protocolo de nutrición deportiva, en un solo lugar</h1>
+          <p>Geles, hidratación, proteína y barras de las marcas que ya usan los corredores, ciclistas y triatletas más exigentes de Venezuela. Sin importar por tu cuenta, sin esperar semanas.</p>
+          <div class="hero-actions">
+            <a href="categoria.html" class="btn btn--primary">Comprar ahora</a>
+            <a href="marcas.html" class="btn btn--ghost-light">Ver las cinco marcas</a>
+          </div>
+        </div>
+        <div class="hero-slide-media">
+          <img src="assets/going/gel-fresa-banano.png" alt="Gel Energético Going sabor Fresa Banano">
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <div class="container">
+        <div class="hero-copy">
+          <p class="eyebrow">Going Nutrición</p>
+          <h1 class="h-46">Geles energéticos en cuatro sabores, con y sin cafeína</h1>
+          <p>19 g de carbohidratos por sobre — Fresa, Granada, Guayaba y Café — en sobre individual o en caja para toda la temporada.</p>
+          <div class="hero-actions">
+            <a href="marca.html" class="btn btn--primary">Conocer Going</a>
+            <a href="categoria.html?cat=carbohidratos" class="btn btn--ghost-light">Ver carbohidratos</a>
+          </div>
+        </div>
+        <div class="hero-slide-media">
+          <img src="assets/going/gel-fresa-banano.png" alt="Gel Energético Going sabor Fresa">
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <div class="container">
+        <div class="hero-copy">
+          <p class="eyebrow">SaltStick</p>
+          <h1 class="h-46">Electrolitos masticables, ahora en cinco sabores</h1>
+          <p>Sin cafeína, sin preparación: se mastican y se sigue. En sobre de 10 unidades o en bote de 60 para quienes entrenan seguido.</p>
+          <div class="hero-actions">
+            <a href="producto-saltstick.html" class="btn btn--primary">Ver FastChews</a>
+            <a href="marca-saltstick.html" class="btn btn--ghost-light">Conocer SaltStick</a>
+          </div>
+        </div>
+        <div class="hero-slide-media">
+          <img src="assets/saltstick/fastchews-packet-tartorange.png" alt="Masticables SaltStick FastChews sabor Naranja">
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-slide">
+      <div class="container">
+        <div class="hero-copy">
+          <p class="eyebrow">Probar</p>
+          <h1 class="h-46">Barras de proteína para después del entrenamiento</h1>
+          <p>20 g de proteína de origen vegetal, sin ingredientes que no reconoces. Ideales para la ventana de recuperación.</p>
+          <div class="hero-actions">
+            <a href="marca-probar.html" class="btn btn--primary">Conocer Probar</a>
+            <a href="categoria.html?cat=proteina" class="btn btn--ghost-light">Ver proteína</a>
+          </div>
+        </div>
+        <div class="hero-slide-media">
+          <img src="assets/probar/barra-peanut-butter-chocolate.png" alt="Barra de Proteína Probar sabor Peanut Butter Chocolate">
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="carousel-arrow carousel-arrow--prev" aria-label="Diapositiva anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button type="button" class="carousel-arrow carousel-arrow--next" aria-label="Siguiente diapositiva">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="carousel-dots" role="tablist" aria-label="Diapositivas del héroe"></div>
+  </section>
+
+  <!-- ============ Grilla de promociones ============ -->
+  <section class="promo-section">
+    <div class="container">
+      <div class="promo-grid">
+
+        <a class="promo-tile promo-tile--wide" href="categoria.html">
+          <img class="promo-tile-bg product-photo" src="assets/going/gel-fresa-banano.png" alt="">
+          <div class="promo-tile-overlay"></div>
+          <span class="promo-tile-tag">Nuevo</span>
+          <h3>Arma tu pack de geles</h3>
+          <p>Mezcla sabores y marcas — Going, Honey Stinger y Probar en un solo pedido.</p>
+        </a>
+
+        <a class="promo-tile" href="producto-going-hidratante.html">
+          <img class="promo-tile-bg product-photo" src="assets/going/hidratante-uva.png" alt="">
+          <div class="promo-tile-overlay"></div>
+          <span class="promo-tile-tag">Going</span>
+          <h3>Hidratante en 3 sabores</h3>
+          <p>Uva, Coco y Pitaya — en sobre individual o en caja.</p>
+        </a>
+
+        <a class="promo-tile" href="marca-saltstick.html" style="background:var(--brand-salt);">
+          <div class="promo-tile-overlay"></div>
+          <span class="promo-tile-tag">Más vendido</span>
+          <h3>SaltStick FastChews</h3>
+          <p>Electrolitos masticables, ahora en bote de 60 y sobres individuales.</p>
+        </a>
+
+        <a class="promo-tile" href="categoria.html" style="background:var(--ink);">
+          <div class="promo-tile-overlay"></div>
+          <span class="promo-tile-tag promo-tile-tag--accent">Envío gratis</span>
+          <h3>Desde $30 de compra</h3>
+          <p>A Caracas, Valencia y Maracaibo en 24–48h.</p>
+        </a>
+
+        <a class="promo-tile" href="articulo.html" style="background:linear-gradient(135deg, #12181d 0%, #2c3d44 100%);">
+          <div class="promo-tile-overlay"></div>
+          <span class="promo-tile-tag">Guía</span>
+          <h3>Carga de geles para tu maratón</h3>
+          <p>La fórmula que usan los entrenadores.</p>
+        </a>
+
+        <a class="promo-tile promo-tile--wide" href="marcas.html" style="background:var(--brand-honey);">
+          <div class="promo-tile-overlay"></div>
+          <span class="promo-tile-tag">Catálogo</span>
+          <h3>Las cinco marcas, un solo despacho</h3>
+          <p>Going, Probar, Skratch Labs, SaltStick y Honey Stinger.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Barra de confianza ============ -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="14" height="11"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="17.5" cy="19" r="1.6"/></svg></span>
+          <div>
+            <h3>Despacho en 24–48h</h3>
+            <p>Desde Caracas a todo el país en uno o dos días hábiles.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5z"/><polyline points="9 12 11 14 15 10"/></svg></span>
+          <div>
+            <h3>Producto 100% original</h3>
+            <p>Importado directo, con factura y garantía de autenticidad.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 1.6c1.6 0 2.6-.9 2.6-2 0-1.4-1.4-1.9-2.9-2.3-1.5-.4-2.6-1-2.6-2.3 0-1.1 1-2 2.5-2a2.5 2.5 0 0 1 2.5 1.5"/><line x1="12" y1="6.5" x2="12" y2="17.5"/></svg></span>
+          <div>
+            <h3>Pago en múltiples monedas</h3>
+            <p>Bolívares, dólares en efectivo o Zelle, sin recargos ocultos.</p>
+          </div>
+        </div>
+        <div class="trust-item">
+          <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0"/><path d="M4 13v4a2 2 0 0 0 2 2h1v-6H5a1 1 0 0 0-1 1z"/><path d="M20 13v4a2 2 0 0 1-2 2h-1v-6h2a1 1 0 0 1 1 1z"/><path d="M12 19v1.2a1.3 1.3 0 0 1-1.3 1.3H9.8"/></svg></span>
+          <div>
+            <h3>Asesoría especializada</h3>
+            <p>Te ayudamos a elegir el protocolo según tu deporte.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Comprar por necesidad ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28">Comprar por necesidad</h2>
+          <p class="lede">Encuentra lo que tu cuerpo pide en cada etapa del entrenamiento.</p>
+        </div>
+      </div>
+      <div class="need-grid">
+        <a class="need-card" href="categoria.html?cat=hidratacion">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 7.5 6 12a6 6 0 0 1-12 0c0-4.5 6-12 6-12z"/></svg></span>
+          <h3>Hidratación</h3>
+          <p>Electrolitos en polvo, cápsulas y masticables</p>
+        </a>
+        <a class="need-card" href="categoria.html?cat=carbohidratos">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 4 14 11 14 10 22 20 9 13 9 13 2"/></svg></span>
+          <h3>Carbohidratos</h3>
+          <p>Geles, gomitas, waffles y barras energéticas</p>
+        </a>
+        <a class="need-card" href="categoria.html?cat=proteina">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8.5v7M4 10v4M17.5 8.5v7M20 10v4M6.5 12h11"/></svg></span>
+          <h3>Proteína</h3>
+          <p>Polvos, barras y fórmulas de recuperación</p>
+        </a>
+        <a class="need-card" href="categoria.html">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M9 22l2-9-3-2 1-4 4 2 3 4h3"/><path d="M13 13l3 2 2 6"/></svg></span>
+          <h3>Por deporte</h3>
+          <p>Running, ciclismo, triatlón, trail y gimnasio</p>
+        </a>
+        <a class="need-card" href="marcas.html">
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 12.1 12.9 4.4a2 2 0 0 0-1.4-.6H5a1.5 1.5 0 0 0-1.5 1.5v6.5a2 2 0 0 0 .6 1.4l7.7 7.7a2 2 0 0 0 2.8 0l5.9-5.9a2 2 0 0 0 .1-2.9z"/><circle cx="8.3" cy="8.3" r="1.5"/></svg></span>
+          <h3>Marcas</h3>
+          <p>Conoce el catálogo completo de cada una</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Antes, durante y después ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28">Antes, durante y después</h2>
+          <p class="lede">Cada etapa del entrenamiento tiene su propio protocolo. Arma el tuyo.</p>
+        </div>
+      </div>
+      <div class="phase-grid">
+        <div class="phase-card">
+          <p class="eyebrow">01 · ANTES</p>
+          <h3>Prepara tu carga de carbohidratos</h3>
+          <p>Llega a la línea de salida con los depósitos de glucógeno llenos, sin pesadez ni molestias digestivas de último momento.</p>
+          <div class="phase-pills">
+            <span class="pill">Geles</span>
+            <span class="pill">Barras</span>
+            <span class="pill">Bebidas</span>
+          </div>
+        </div>
+        <div class="phase-card">
+          <p class="eyebrow">02 · DURANTE</p>
+          <h3>Sostén el ritmo sin fallar</h3>
+          <p>Dosis medidas de carbohidrato, sodio y cafeína para que el rendimiento no se caiga en el kilómetro treinta.</p>
+          <div class="phase-pills">
+            <span class="pill">Geles con cafeína</span>
+            <span class="pill">Masticables</span>
+            <span class="pill">Hidratación</span>
+          </div>
+        </div>
+        <div class="phase-card">
+          <p class="eyebrow">03 · DESPUÉS</p>
+          <h3>Recupera y repara el músculo</h3>
+          <p>Proteína de calidad en la ventana correcta para que el cuerpo esté listo para la siguiente sesión.</p>
+          <div class="phase-pills">
+            <span class="pill">Proteína</span>
+            <span class="pill">Batidos</span>
+            <span class="pill">Barras de recuperación</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Lo más vendido ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28">Lo más vendido</h2>
+          <p class="lede">Los productos que más repiten nuestros clientes, mes tras mes.</p>
+        </div>
+        <a class="link-more" href="categoria.html">Ver todo →</a>
+      </div>
+      <div class="product-grid">
+
+        <a class="product-card" href="producto.html?flavor=Fresa">
+          <div class="product-media">
+            <span class="tag tag--best">Más vendido</span>
+            <img class="product-photo" src="assets/going/gel-fresa-banano.png" alt="Gel Energético Going sabor Fresa">
+          </div>
+          <div class="product-info">
+            <p class="product-brand">Going Nutrición</p>
+            <h3 class="product-name">Gel Energético Fresa</h3>
+            <p class="product-stat">19 g carbohidratos · 35 mg sodio</p>
+            <div class="product-bottom">
+              <span class="product-price">Desde $3,44</span>
+              <span class="product-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                4.7 <span class="count">(63)</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html">
+          <div class="product-media">
+            <span class="tag tag--best">Más vendido</span>
+            <div class="product-placeholder" style="background:var(--brand-skratch)">SKRATCH<br>LABS<br>Hidratación</div>
+          </div>
+          <div class="product-info">
+            <p class="product-brand">Skratch Labs</p>
+            <h3 class="product-name">Hidratación Limonada — 20 porciones</h3>
+            <p class="product-stat">380 mg sodio · 21 g carbohidratos por porción</p>
+            <div class="product-bottom">
+              <span class="product-price">$22,00</span>
+              <span class="product-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                4.9 <span class="count">(74)</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto-honey-waffle.html?flavor=Miel">
+          <div class="product-media">
+            <img class="product-photo" src="assets/honey/waffle-miel.png" alt="Waffle Energético Honey Stinger sabor Miel">
+          </div>
+          <div class="product-info">
+            <p class="product-brand">Honey Stinger</p>
+            <h3 class="product-name">Waffle Energético Orgánico Miel</h3>
+            <p class="product-stat">19 g carbohidratos · 150 kcal</p>
+            <div class="product-bottom">
+              <span class="product-price">Desde $3,65</span>
+              <span class="product-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                4.7 <span class="count">(41)</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto.html">
+          <div class="product-media">
+            <img class="product-photo" src="assets/probar/barra-peanut-butter-chocolate.png" alt="Barra de Proteína Probar sabor Peanut Butter Chocolate">
+          </div>
+          <div class="product-info">
+            <p class="product-brand">Probar</p>
+            <h3 class="product-name">Barra de Proteína Peanut Butter Chocolate</h3>
+            <p class="product-stat">20 g proteína · 210 kcal</p>
+            <div class="product-bottom">
+              <span class="product-price">$3,50</span>
+              <span class="product-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                4.6 <span class="count">(41)</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Las cinco marcas ============ -->
+  <section class="section section--ink" id="marcas">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28" style="color:#fff">Las cinco marcas</h2>
+          <p class="lede">Cada una resuelve una necesidad distinta. Juntas, cubren todo el protocolo.</p>
+        </div>
+      </div>
+      <div class="brand-row">
+        <a class="brand-card" href="marca.html">
+          <span class="brand-dot" style="background:var(--brand-going)"></span>
+          <h3>Going Nutrición</h3>
+          <p>Geles, hidratación, proteína y barras pensados para el ritmo suramericano. La marca más vendida de la casa.</p>
+        </a>
+        <a class="brand-card" href="marca-probar.html">
+          <span class="brand-dot" style="background:var(--brand-probar)"></span>
+          <h3>Probar</h3>
+          <p>Barras de proteína y energéticas, gomitas de rápida absorción para entrenos largos.</p>
+        </a>
+        <a class="brand-card" href="marca-skratch.html">
+          <span class="brand-dot" style="background:var(--brand-skratch)"></span>
+          <h3>Skratch Labs</h3>
+          <p>Electrolitos en polvo y en barra, formulados con ciclistas profesionales.</p>
+        </a>
+        <a class="brand-card" href="marca-saltstick.html">
+          <span class="brand-dot" style="background:var(--brand-salt)"></span>
+          <h3>SaltStick</h3>
+          <p>Masticables de electrolitos, en bote y en sobres, para prevenir calambres en distancias largas.</p>
+        </a>
+        <a class="brand-card" href="marca-honey.html">
+          <span class="brand-dot" style="background:var(--brand-honey)"></span>
+          <h3>Honey Stinger</h3>
+          <p>Waffles, geles y gomitas energéticas a base de miel natural.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Producto destacado ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-media">
+          <img class="product-photo" src="assets/going/proteina-chocolate.png" alt="Proteína Recovery Going sabor Chocolate">
+        </div>
+        <div class="feature-copy">
+          <p class="eyebrow">Producto destacado</p>
+          <h2 class="h-28">Proteína Recovery Going 600 g — Chocolate</h2>
+          <p>Proteína aislada de arveja, 100% vegana, con perfil completo de aminoácidos esenciales — la eligen quienes buscan recuperación sin lácteos.</p>
+          <ul class="feature-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              21 g de proteína por porción, con todos los aminoácidos esenciales
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              Proteína aislada de arveja — 100% vegana, cero lactosa
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              Cero azúcar añadida, sabor natural a chocolate
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              Ideal para la ventana de recuperación post-entrenamiento
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              Producto 100% colombiano
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
+              Rinde 20 porciones por envase de 600 g
+            </li>
+          </ul>
+          <a href="producto.html" class="btn btn--primary" data-add-to-cart>Agregar al carrito — $44,00</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Prueba social ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28">Lo que dicen quienes ya entrenan con nosotros</h2>
+        </div>
+      </div>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="review-stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+          </div>
+          <p class="review-quote">"Los geles Going me han acompañado en cada maratón. Ya no salgo a correr sin ellos."</p>
+          <div class="review-meta">
+            <div class="review-who">
+              <p class="name">María González</p>
+              <p class="city">Caracas</p>
+            </div>
+            <span class="review-verified">Compra verificada</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+          </div>
+          <p class="review-quote">"Los masticables SaltStick evitaron los calambres que siempre tenía en el triatlón."</p>
+          <div class="review-meta">
+            <div class="review-who">
+              <p class="name">Carlos Pérez</p>
+              <p class="city">Valencia</p>
+            </div>
+            <span class="review-verified">Compra verificada</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+          </div>
+          <p class="review-quote">"Pedí el jueves y el sábado ya estaba entrenando con mi pedido en mano."</p>
+          <div class="review-meta">
+            <div class="review-who">
+              <p class="name">Andreína Rojas</p>
+              <p class="city">Maracaibo</p>
+            </div>
+            <span class="review-verified">Compra verificada</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+          </div>
+          <p class="review-quote">"Los waffles Honey Stinger son mi merienda antes de cada rodada larga."</p>
+          <div class="review-meta">
+            <div class="review-who">
+              <p class="name">Luis Fernández</p>
+              <p class="city">Mérida</p>
+            </div>
+            <span class="review-verified">Compra verificada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Guías ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28">Guías para entrenar mejor</h2>
+          <p class="lede">Protocolos concretos, escritos por gente que también entrena.</p>
+        </div>
+        <a class="link-more" href="guias.html">Ver todas →</a>
+      </div>
+      <div class="article-grid">
+        <a class="article-card" href="articulo.html">
+          <div class="article-media">
+            <div class="article-placeholder" style="background:var(--brand-salt)">Hidratación y sodio</div>
+          </div>
+          <p class="eyebrow">Hidratación</p>
+          <h3>Cuánto sodio necesitas según cuánto sudas</h3>
+          <p>Una guía práctica para calcular tu pérdida de sodio y ajustar la dosis en carrera.</p>
+        </a>
+        <a class="article-card" href="articulo.html">
+          <div class="article-media">
+            <div class="article-placeholder" style="background:var(--brand-going)">Carga de geles</div>
+          </div>
+          <p class="eyebrow">Carbohidratos</p>
+          <h3>Cómo calcular tu carga de geles para una maratón</h3>
+          <p>La fórmula que usan los entrenadores para no quedarte corto de energía en el kilómetro 30.</p>
+        </a>
+        <a class="article-card" href="articulo.html">
+          <div class="article-media">
+            <div class="article-placeholder" style="background:var(--brand-probar)">Ventana proteica</div>
+          </div>
+          <p class="eyebrow">Proteína</p>
+          <h3>Proteína post-entrenamiento: la ventana real de recuperación</h3>
+          <p>Qué dice la evidencia sobre cuándo y cuánto consumir después de entrenar.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Preguntas frecuentes ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28">Preguntas frecuentes</h2>
+          <p class="lede">Lo que más nos preguntan antes de comprar.</p>
+        </div>
+      </div>
+      <div class="accordion faq-accordion">
+        <details class="accordion-item" open>
+          <summary>
+            ¿Cómo sé que el producto es 100% original?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Importamos directo de cada marca — Going Nutrición, Probar, Skratch Labs, SaltStick y Honey Stinger — con factura de compra. No trabajamos con intermediarios ni reempaque, así que lo que recibes es exactamente lo que la marca fabrica.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>
+            ¿Cuánto tarda el despacho?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>24–48 horas hábiles a Caracas, Valencia y Maracaibo. Al resto del país, entre 48 y 72 horas según la agencia de encomiendas que elijas en el checkout.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>
+            ¿Qué métodos de pago aceptan?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Bolívares a tasa del día, dólares en efectivo o Zelle, sin recargos ocultos. Te confirmamos el monto exacto antes de despachar el pedido.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>
+            ¿Puedo cambiar o devolver un producto?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Sí, dentro de los 7 días siguientes a la entrega, siempre que el producto esté en su empaque original y conserves el comprobante de compra.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>
+            ¿Hacen envíos a todo el país?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="accordion-body">
+            <p>Sí. Despachamos a todo el territorio nacional a través de agencias de encomiendas. El costo se calcula en el checkout según tu ubicación; las compras desde $30 tienen envío gratis dentro de Caracas, Valencia y Maracaibo.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Boletín ============ -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter">
+        <h2 class="h-28">Recibe protocolos y ofertas antes que nadie</h2>
+        <p>Un correo a la semana, sin spam. Cancela cuando quieras.</p>
+        <form class="newsletter-form" data-newsletter-form>
+          <label for="newsletter-email" class="visually-hidden">Correo electrónico</label>
+          <input id="newsletter-email" type="email" placeholder="tu@correo.com" required>
+          <button type="submit" class="btn btn--dark">Suscribirme</button>
+        </form>
+        <p class="newsletter-note">Al suscribirte aceptas recibir comunicaciones comerciales de Apex Nutrición.</p>
+        <p class="newsletter-success" data-newsletter-success>Listo — revisa tu correo para confirmar la suscripción.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="index.html" class="logo"><span class="logo-name">Apex Nutrición</span></a>
+        <p>Tienda venezolana especializada en nutrición deportiva. Reunimos el portafolio de Going Nutrición, Probar, Skratch Labs, SaltStick y Honey Stinger bajo un solo techo, con despacho local y producto 100% original.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Comprar</h4>
+        <ul>
+          <li><a href="categoria.html?cat=hidratacion">Hidratación</a></li>
+          <li><a href="categoria.html?cat=carbohidratos">Carbohidratos</a></li>
+          <li><a href="categoria.html?cat=proteina">Proteína</a></li>
+          <li><a href="categoria.html">Por deporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Marcas</h4>
+        <ul>
+          <li><a href="marca.html">Going Nutrición</a></li>
+          <li><a href="marca-probar.html">Probar</a></li>
+          <li><a href="marca-skratch.html">Skratch Labs</a></li>
+          <li><a href="marca-saltstick.html">SaltStick</a></li>
+          <li><a href="marca-honey.html">Honey Stinger</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Envíos y despacho</a></li>
+          <li><a href="#">Cambios y devoluciones</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Boletín</h4>
+        <p style="font-size:13px; color:var(--ink-2)">Protocolos y ofertas, una vez a la semana.</p>
+        <form data-newsletter-form>
+          <label for="footer-email" class="visually-hidden">Correo electrónico</label>
+          <input id="footer-email" type="email" placeholder="tu@correo.com" required>
+          <button type="submit" class="icon-btn" aria-label="Suscribirme al boletín" style="border:1px solid var(--line)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+        <p class="newsletter-success" data-newsletter-success style="margin-top:10px">Listo, ya estás suscrito.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Apex Nutrición. Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/><circle cx="12" cy="12" r="9"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.4 2.2 4 4.5 4.3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js?v=14"></script>
+</body>
+</html>

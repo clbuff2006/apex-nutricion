@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="es-VE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cómo calcular tu carga de geles para una maratón | Apex Nutrición</title>
+<meta name="description" content="La fórmula para calcular cuántos geles necesitas en una maratón según tu ritmo objetivo, cada cuánto tomarlos y cómo probar tu protocolo antes del día de la carrera.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=14">
+</head>
+<body>
+
+<!-- ============ Barra de anuncio ============ -->
+<div class="announce">
+  <p>Envío gratis desde <strong>$30</strong> · Despacho en <strong>24–48h</strong> en Caracas, Valencia y Maracaibo</p>
+</div>
+
+<!-- ============ Header ============ -->
+<header class="site-header">
+  <div class="container">
+
+    <button class="menu-toggle icon-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+
+    <a href="index.html" class="logo" aria-label="Apex Nutrición — Inicio">
+      <span class="logo-name">Apex Nutrición</span>
+      <span class="logo-tag">Nutrición Deportiva</span>
+    </a>
+
+    <nav class="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">HIDRATACIÓN
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html?cat=hidratacion">Polvos</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Cápsulas</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Masticables</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Alto sodio</a></li>
+                <li><a href="categoria.html?cat=hidratacion">Uso diario</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">CARBOHIDRATOS
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html?cat=carbohidratos">Geles</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Gomitas</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Waffles</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Barras</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Con cafeína</a></li>
+                <li><a href="categoria.html?cat=carbohidratos">Sin cafeína</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">PROTEÍNA
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html?cat=proteina">Polvos</a></li>
+                <li><a href="categoria.html?cat=proteina">Barras</a></li>
+                <li><a href="categoria.html?cat=proteina">Recuperación</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-haspopup="true">POR DEPORTE
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="mega">
+            <div class="mega-group">
+              <ul>
+                <li><a href="categoria.html">Running</a></li>
+                <li><a href="categoria.html">Ciclismo</a></li>
+                <li><a href="categoria.html">Triatlón</a></li>
+                <li><a href="categoria.html">Trail</a></li>
+                <li><a href="categoria.html">Gimnasio</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="marcas.html">MARCAS</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="guias.html">GUÍAS</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <form class="search-form" role="search" action="busqueda.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <label for="search-input" class="visually-hidden">Buscar productos</label>
+        <input id="search-input" type="search" name="q" placeholder="Buscar geles, proteína…">
+      </form>
+      <a class="icon-btn" href="#" aria-label="Mi cuenta">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      </a>
+      <a class="icon-btn cart-btn" href="carrito.html" aria-label="Carrito de compras">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.3"/><circle cx="18" cy="21" r="1.3"/><path d="M2.5 3h2.6l2.4 12.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6l1.5-8.2H6"/></svg>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Navegación móvil">
+    <form class="search-form" role="search" action="busqueda.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <label for="search-input-mobile" class="visually-hidden">Buscar productos</label>
+      <input id="search-input-mobile" type="search" name="q" placeholder="Buscar geles, proteína…">
+    </form>
+
+    <details>
+      <summary>HIDRATACIÓN <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html?cat=hidratacion">Polvos</a>
+        <a href="categoria.html?cat=hidratacion">Cápsulas</a>
+        <a href="categoria.html?cat=hidratacion">Masticables</a>
+        <a href="categoria.html?cat=hidratacion">Alto sodio</a>
+        <a href="categoria.html?cat=hidratacion">Uso diario</a>
+      </div>
+    </details>
+    <details>
+      <summary>CARBOHIDRATOS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html?cat=carbohidratos">Geles</a>
+        <a href="categoria.html?cat=carbohidratos">Gomitas</a>
+        <a href="categoria.html?cat=carbohidratos">Waffles</a>
+        <a href="categoria.html?cat=carbohidratos">Barras</a>
+        <a href="categoria.html?cat=carbohidratos">Con cafeína</a>
+        <a href="categoria.html?cat=carbohidratos">Sin cafeína</a>
+      </div>
+    </details>
+    <details>
+      <summary>PROTEÍNA <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html?cat=proteina">Polvos</a>
+        <a href="categoria.html?cat=proteina">Barras</a>
+        <a href="categoria.html?cat=proteina">Recuperación</a>
+      </div>
+    </details>
+    <details>
+      <summary>POR DEPORTE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+      <div class="mobile-links">
+        <a href="categoria.html">Running</a>
+        <a href="categoria.html">Ciclismo</a>
+        <a href="categoria.html">Triatlón</a>
+        <a href="categoria.html">Trail</a>
+        <a href="categoria.html">Gimnasio</a>
+      </div>
+    </details>
+    <a class="mobile-plain" href="marcas.html">MARCAS</a>
+    <a class="mobile-plain" href="guias.html">GUÍAS</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <!-- ============ Migas de pan ============ -->
+    <nav class="breadcrumbs" aria-label="Ruta de navegación">
+      <a href="index.html">Inicio</a>
+      <span class="sep">/</span>
+      <a href="guias.html">Guías</a>
+      <span class="sep">/</span>
+      <span class="current">Cómo calcular tu carga de geles para una maratón</span>
+    </nav>
+
+    <div class="article-layout">
+
+      <!-- ============ Índice de contenidos ============ -->
+      <aside class="article-toc" aria-label="Índice de contenidos">
+        <h2>En esta guía</h2>
+        <ul>
+          <li><a href="#importa">Por qué importa la carga de carbohidratos</a></li>
+          <li><a href="#cuantos">Cuántos geles según tu ritmo</a></li>
+          <li><a href="#frecuencia">Cada cuánto tomarlos</a></li>
+          <li><a href="#probar">Prueba tu protocolo antes</a></li>
+          <li><a href="#errores">Errores comunes</a></li>
+        </ul>
+      </aside>
+
+      <!-- ============ Columna de lectura ============ -->
+      <article class="article-main">
+        <div class="article-header">
+          <p class="eyebrow">Carbohidratos</p>
+          <h1>Cómo calcular tu carga de geles para una maratón</h1>
+          <p class="article-meta">
+            Por Andrea Salazar, nutricionista deportiva · 7 min de lectura · Actualizado el 12 de agosto de 2026
+          </p>
+        </div>
+
+        <div class="article-cover">
+          <p>Carga de geles<br>en maratón</p>
+        </div>
+
+        <div class="article-body">
+          <p>Nadie termina una maratón por falta de piernas en el kilómetro 32 — termina por falta de glucógeno. La "pared" de la que tanto se habla en el running es, casi siempre, un problema de matemática simple: llevaste menos carbohidratos de los que tu cuerpo iba a necesitar. Esta guía te explica cómo calcular la carga exacta según tu ritmo objetivo y cómo distribuirla durante la carrera.</p>
+
+          <h2 id="importa">Por qué importa la carga de carbohidratos</h2>
+          <p>Tu cuerpo almacena entre 400 y 500 gramos de glucógeno entre el hígado y los músculos — suficiente para unos 90 a 120 minutos de esfuerzo a intensidad de carrera. Pasado ese punto, si no repones carbohidratos desde el exterior, el ritmo cae en picada sin importar cuánto hayas entrenado.</p>
+          <p>La ciencia del deporte recomienda entre 60 y 90 gramos de carbohidratos por hora para esfuerzos de más de dos horas y media, siempre que el intestino esté entrenado para absorberlos. Ese número — no la sed ni el hambre — es el que debe guiar cuántos geles llevas contigo.</p>
+
+          <h2 id="cuantos">Cuántos geles según tu ritmo</h2>
+          <p>Con un gel estándar de 25 g de carbohidratos, cubrir 60 g por hora significa poco más de dos geles cada 60 minutos. La cantidad total depende directamente de cuánto dura tu carrera:</p>
+          <ul class="article-list">
+            <li>Maratón en 3:00 horas → 7 a 8 geles</li>
+            <li>Maratón en 3:30 horas → 8 a 9 geles</li>
+            <li>Maratón en 4:00 horas → 9 a 10 geles</li>
+            <li>Maratón en 4:30 horas o más → 10 a 12 geles, alternando con geles sin cafeína</li>
+          </ul>
+          <p>Estas cifras son un punto de partida, no una receta rígida. Corredores más pesados o con metabolismos más exigentes pueden necesitar el extremo superior del rango; ajusta según cómo responda tu cuerpo en los entrenamientos largos.</p>
+
+          <h2 id="frecuencia">Cada cuánto tomarlos</h2>
+          <p>La distribución importa tanto como la cantidad total. Tomar todos los geles de una sola vez sobrecarga el estómago y reduce la absorción; espaciarlos demasiado deja ventanas de baja energía. La recomendación general es un gel cada 35 a 45 minutos, comenzando entre el kilómetro 8 y el 10 — no antes, porque tus reservas iniciales todavía están intactas.</p>
+          <p>Si usas geles con cafeína, resérvalos para la segunda mitad de la carrera, cuando más se necesita el efecto sobre la percepción del esfuerzo. Tres geles con cafeína (150 mg en total) es el límite razonable para la mayoría de los corredores en una sola carrera.</p>
+
+          <h2 id="probar">Prueba tu protocolo antes</h2>
+          <p>El intestino se entrena igual que las piernas. Un corredor que nunca ha tomado más de tres geles en un entrenamiento no debería intentar tomar nueve el día de la maratón — el resultado más probable son molestias digestivas, no un mejor rendimiento.</p>
+          <p>Usa tus rodajes largos de las últimas ocho semanas para practicar el protocolo completo: mismos geles, misma frecuencia, mismo horario relativo a las comidas. Si algo no cae bien, todavía tienes tiempo de ajustar la marca, el sabor o la dosis antes de la carrera.</p>
+
+          <h2 id="errores">Errores comunes</h2>
+          <ul class="article-tips">
+            <li><strong>Cambiar de marca de gel el día de la carrera.</strong> Cada fórmula tiene una proporción distinta de glucosa y fructosa, y el intestino no reacciona igual a todas.</li>
+            <li><strong>Esperar a sentir hambre o fatiga para empezar.</strong> Para cuando el cuerpo lo pide, ya perdiste varios minutos de ventana de absorción.</li>
+            <li><strong>No tomar agua junto con el gel.</strong> La mayoría necesita líquido adicional para diluirse correctamente y evitar molestias.</li>
+            <li><strong>Guardar todos los geles con cafeína para el final.</strong> Si los necesitas en el kilómetro 35, ya es tarde para que hagan efecto.</li>
+          </ul>
+
+          <p>Al final, la carga de geles no es una decisión del día de la carrera — es un cálculo que armas semanas antes, pruebas en tus entrenamientos largos y ejecutas con disciplina cuando llega el momento. Haz la matemática con calma; tus piernas te lo van a agradecer en el kilómetro 35.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- ============ Productos relacionados ============ -->
+    <section class="article-related">
+      <div class="section-head">
+        <div>
+          <h2 class="h-28">Productos relacionados</h2>
+          <p class="lede">Los geles mencionados en esta guía, listos para tu próxima carga.</p>
+        </div>
+      </div>
+      <div class="product-grid" style="grid-template-columns:repeat(3, 1fr); max-width:960px; margin:0 auto;">
+
+        <a class="product-card" href="producto.html?flavor=Fresa">
+          <div class="product-media">
+            <span class="tag tag--best">Más vendido</span>
+            <img class="product-photo" src="assets/going/gel-fresa-banano.png" alt="Gel Energético Going sabor Fresa">
+          </div>
+          <div class="product-info">
+            <p class="product-brand">Going Nutrición</p>
+            <h3 class="product-name">Gel Energético Fresa</h3>
+            <p class="product-stat">19 g carbohidratos · 30 mg cafeína</p>
+            <div class="product-bottom">
+              <span class="product-price">Desde $3,44</span>
+              <span class="product-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                4.7 <span class="count">(63)</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto-going-gel-cafe.html">
+          <div class="product-media">
+            <img class="product-photo" src="assets/going/gel-cafe-colombia.png" alt="Gel Energético Going sabor Café">
+          </div>
+          <div class="product-info">
+            <p class="product-brand">Going Nutrición</p>
+            <h3 class="product-name">Gel Energético Café</h3>
+            <p class="product-stat">19 g carbohidratos · 30 mg cafeína</p>
+            <div class="product-bottom">
+              <span class="product-price">$3,44</span>
+              <span class="product-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                4.6 <span class="count">(39)</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <a class="product-card" href="producto-honey-gel.html?flavor=Strawberry%20Kiwi">
+          <div class="product-media">
+            <img class="product-photo" src="assets/honey/gel-strawberry-kiwi.png" alt="Gel Energético Honey Stinger sabor Strawberry Kiwi">
+          </div>
+          <div class="product-info">
+            <p class="product-brand">Honey Stinger</p>
+            <h3 class="product-name">Gel Energético Orgánico con Cafeína Strawberry Kiwi</h3>
+            <p class="product-stat">24 g carbohidratos · 32 mg cafeína</p>
+            <div class="product-bottom">
+              <span class="product-price">$4,50</span>
+              <span class="product-rating">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.5 16.5 14 18.5 21 12 17 5.5 21 7.5 14 2 9.5 9 9"/></svg>
+                4.6 <span class="count">(29)</span>
+              </span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a href="index.html" class="logo"><span class="logo-name">Apex Nutrición</span></a>
+        <p>Tienda venezolana especializada en nutrición deportiva. Reunimos el portafolio de Going Nutrición, Probar, Skratch Labs, SaltStick y Honey Stinger bajo un solo techo, con despacho local y producto 100% original.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Comprar</h4>
+        <ul>
+          <li><a href="categoria.html?cat=hidratacion">Hidratación</a></li>
+          <li><a href="categoria.html?cat=carbohidratos">Carbohidratos</a></li>
+          <li><a href="categoria.html?cat=proteina">Proteína</a></li>
+          <li><a href="categoria.html">Por deporte</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Marcas</h4>
+        <ul>
+          <li><a href="marca.html">Going Nutrición</a></li>
+          <li><a href="marca-probar.html">Probar</a></li>
+          <li><a href="marca-skratch.html">Skratch Labs</a></li>
+          <li><a href="marca-saltstick.html">SaltStick</a></li>
+          <li><a href="marca-honey.html">Honey Stinger</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ayuda</h4>
+        <ul>
+          <li><a href="#">Envíos y despacho</a></li>
+          <li><a href="#">Cambios y devoluciones</a></li>
+          <li><a href="#">Preguntas frecuentes</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>Boletín</h4>
+        <p style="font-size:13px; color:var(--ink-2)">Protocolos y ofertas, una vez a la semana.</p>
+        <form data-newsletter-form>
+          <label for="footer-email" class="visually-hidden">Correo electrónico</label>
+          <input id="footer-email" type="email" placeholder="tu@correo.com" required>
+          <button type="submit" class="icon-btn" aria-label="Suscribirme al boletín" style="border:1px solid var(--line)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+        <p class="newsletter-success" data-newsletter-success style="margin-top:10px">Listo, ya estás suscrito.</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Apex Nutrición. Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 8h-2a2 2 0 0 0-2 2v10M8 13h5"/><circle cx="12" cy="12" r="9"/></svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.4 2.2 4 4.5 4.3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js?v=14"></script>
+</body>
+</html>
