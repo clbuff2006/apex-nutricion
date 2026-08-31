@@ -1701,6 +1701,24 @@ button.pill:hover{ border-color: var(--ink); }
   margin-top: var(--sp-5);
 }
 .brand-banner h1{ color: #fff; margin-top: var(--sp-2); max-width: 640px; }
+.brand-social{ display: flex; align-items: center; gap: var(--sp-3); margin-top: var(--sp-4); }
+.brand-social-label{
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,.55);
+}
+.brand-social a{
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.3);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  transition: border-color var(--ease), background var(--ease);
+}
+.brand-social a:hover{ border-color: #fff; background: rgba(255,255,255,.12); }
+.brand-social svg{ width: 15px; height: 15px; }
 .brand-banner p.lede{
   color: rgba(255,255,255,.72);
   margin-top: var(--sp-4);
