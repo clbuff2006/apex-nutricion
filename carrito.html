@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=20">
 </head>
 <body>
 
@@ -158,18 +158,28 @@
 
       <aside class="cart-summary" aria-label="Resumen del pedido">
         <h2>Resumen del pedido</h2>
+        <p class="bcv-rate-note" id="bcv-rate-note">Cargando tasa BCV…</p>
         <div class="summary-row">
           <span>Subtotal</span>
-          <span id="cart-subtotal">$37,30</span>
+          <span class="summary-amount">
+            <span id="cart-subtotal">$37,30</span>
+            <span class="summary-bs" id="cart-subtotal-bs"></span>
+          </span>
         </div>
         <div class="summary-row">
           <span>Envío</span>
-          <span id="cart-shipping">$4,00</span>
+          <span class="summary-amount">
+            <span id="cart-shipping">$4,00</span>
+            <span class="summary-bs" id="cart-shipping-bs"></span>
+          </span>
         </div>
         <p class="summary-note" id="cart-shipping-note">Añade $12,70 más y el envío es gratis.</p>
         <div class="summary-row summary-total">
           <span>Total</span>
-          <span id="cart-total">$41,30</span>
+          <span class="summary-amount">
+            <span id="cart-total">$41,30</span>
+            <span class="summary-bs" id="cart-total-bs"></span>
+          </span>
         </div>
 
         <div class="checkout-fields">
@@ -273,6 +283,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=19"></script>
+<script src="app.js?v=20"></script>
 </body>
 </html>

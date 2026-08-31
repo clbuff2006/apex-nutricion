@@ -1,5 +1,93 @@
 'use strict';
 
+/* ---------- Tasa BCV (Banco Central de Venezuela) ---------- */
+const BCV_CACHE_KEY = 'apex_bcv_rate';
+let bcvRate = null; // Bs por $1, null hasta que se obtenga (o si falla)
+
+function todayCaracas(){
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Caracas' }); // YYYY-MM-DD
+}
+
+function loadCachedBcvRate(){
+  try {
+    const raw = localStorage.getItem(BCV_CACHE_KEY);
+    if(!raw) return null;
+    const parsed = JSON.parse(raw);
+    if(parsed && parsed.cachedDate === todayCaracas() && typeof parsed.rate === 'number') return parsed.rate;
+    return null;
+  } catch(e){ return null; }
+}
+
+function saveCachedBcvRate(rate){
+  try {
+    localStorage.setItem(BCV_CACHE_KEY, JSON.stringify({ rate: rate, cachedDate: todayCaracas() }));
+  } catch(e){ /* localStorage no disponible, no es crítico */ }
+}
+
+function fetchBcvRate(){
+  const cached = loadCachedBcvRate();
+  if(cached != null){
+    bcvRate = cached;
+    return Promise.resolve(bcvRate);
+  }
+  return fetch('https://ve.dolarapi.com/v1/dolares/oficial')
+    .then(function(res){ if(!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+    .then(function(data){
+      const rate = Number(data && data.promedio);
+      if(!rate || isNaN(rate)) throw new Error('Tasa inválida');
+      bcvRate = rate;
+      saveCachedBcvRate(rate);
+      return bcvRate;
+    })
+    .catch(function(err){
+      console.error('No se pudo obtener la tasa BCV: ' + err);
+      bcvRate = null;
+      return null;
+    });
+}
+
+function formatBsNumber(usdAmount){
+  if(bcvRate == null || usdAmount == null || isNaN(usdAmount)) return null;
+  const bs = usdAmount * bcvRate;
+  const parts = bs.toFixed(2).split('.');
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return parts[0] + ',' + parts[1];
+}
+
+function parsePriceText(text){
+  if(!text) return null;
+  const match = String(text).match(/\$\s*([\d.,]+)/);
+  if(!match) return null;
+  const num = parseFloat(match[1].replace(',', '.'));
+  return isNaN(num) ? null : num;
+}
+
+/* Agrega "≈ Bs ..." debajo del precio en cada tarjeta de producto (catálogo, home, búsqueda) */
+function injectProductCardBsPrices(){
+  if(bcvRate == null) return;
+  document.querySelectorAll('.product-card .product-price').forEach(function(el){
+    let usdSpan = el.querySelector('.product-price-usd');
+    if(!usdSpan){
+      const text = el.textContent;
+      el.innerHTML = '';
+      usdSpan = document.createElement('span');
+      usdSpan.className = 'product-price-usd';
+      usdSpan.textContent = text;
+      el.appendChild(usdSpan);
+    }
+    const usd = parsePriceText(usdSpan.textContent);
+    const bsFormatted = formatBsNumber(usd);
+    if(bsFormatted == null) return;
+    let bsSpan = el.querySelector('.product-price-bs');
+    if(!bsSpan){
+      bsSpan = document.createElement('span');
+      bsSpan.className = 'product-price-bs';
+      el.appendChild(bsSpan);
+    }
+    bsSpan.textContent = '≈ Bs ' + bsFormatted;
+  });
+}
+
 /* ---------- Carrito real (localStorage) ---------- */
 const CART_STORAGE_KEY = 'apex_cart';
 
@@ -650,8 +738,26 @@ function initCartPage(){
       }
     }
 
+    const rateNoteEl = document.getElementById('bcv-rate-note');
+    const subtotalBsEl = document.getElementById('cart-subtotal-bs');
+    const shippingBsEl = document.getElementById('cart-shipping-bs');
+    const totalBsEl = document.getElementById('cart-total-bs');
+    if(bcvRate != null){
+      if(rateNoteEl) rateNoteEl.textContent = 'Tasa BCV hoy: Bs ' + formatBsNumber(1) + ' por $1';
+      if(subtotalBsEl) subtotalBsEl.textContent = 'Bs ' + formatBsNumber(subtotal);
+      if(shippingBsEl) shippingBsEl.textContent = shipping === 0 ? '' : 'Bs ' + formatBsNumber(shipping);
+      if(totalBsEl) totalBsEl.textContent = 'Bs ' + formatBsNumber(total);
+    } else {
+      if(rateNoteEl) rateNoteEl.textContent = 'Tasa BCV no disponible por ahora.';
+      if(subtotalBsEl) subtotalBsEl.textContent = '';
+      if(shippingBsEl) shippingBsEl.textContent = '';
+      if(totalBsEl) totalBsEl.textContent = '';
+    }
+
     initCartCount();
   }
+
+  window.__apexCartRerender = render;
 
   const couponForm = document.getElementById('coupon-form');
   const couponNote = document.getElementById('coupon-note');
@@ -713,11 +819,16 @@ function initCheckoutButton(){
     const lines = cart.map(function(item){
       return '• ' + item.name + ' x' + item.quantity + ' — ' + formatPrice(item.unitPrice * item.quantity);
     });
+    const bsSuffix = function(usd){
+      const bs = formatBsNumber(usd);
+      return bs ? ' (Bs ' + bs + ')' : '';
+    };
     const message = 'Hola, quiero hacer este pedido:\n\n' +
       lines.join('\n') +
-      '\n\nSubtotal: ' + formatPrice(subtotal) +
-      '\nEnvío: ' + (shipping === 0 ? 'Gratis' : formatPrice(shipping)) +
-      '\nTotal: ' + formatPrice(total) +
+      '\n\nSubtotal: ' + formatPrice(subtotal) + bsSuffix(subtotal) +
+      '\nEnvío: ' + (shipping === 0 ? 'Gratis' : formatPrice(shipping) + bsSuffix(shipping)) +
+      '\nTotal: ' + formatPrice(total) + bsSuffix(total) +
+      (bcvRate != null ? '\n\nTasa BCV: Bs ' + formatBsNumber(1) + ' por $1' : '') +
       '\n\nNombre: ' + customerName +
       '\nZona: ' + location;
 
@@ -813,4 +924,9 @@ document.addEventListener('DOMContentLoaded', function(){
   initArticleToc();
   initCartPage();
   initHeroCarousel();
+
+  fetchBcvRate().then(function(){
+    injectProductCardBsPrices();
+    if(typeof window.__apexCartRerender === 'function') window.__apexCartRerender();
+  });
 });
