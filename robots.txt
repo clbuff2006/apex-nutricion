@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /carrito.html
+Disallow: /busqueda.html
+
+Sitemap: https://harmonious-biscotti-0af22d.netlify.app/sitemap.xml
