@@ -54,11 +54,14 @@ async function handleCallbackQuery(callbackQuery, appsScriptUrl, botToken) {
   const action = parts[0];
   const orderId = parts[1];
 
+  // Responder al instante para que el botón deje de "cargar" apenas lo tocan.
+  // Lo que tarde más (Apps Script + el próximo mensaje) sigue después, sin que el usuario vea el spinner.
+  await answerCallbackQuery(botToken, callbackQuery.id);
+
   if (action === 'priceother') {
     await sendTelegramMessage(botToken, chatId, 'Escribe el monto de delivery para ' + orderId + ':', {
       force_reply: true
     });
-    await answerCallbackQuery(botToken, callbackQuery.id);
     return;
   }
 
@@ -66,7 +69,9 @@ async function handleCallbackQuery(callbackQuery, appsScriptUrl, botToken) {
   if (parts[2] !== undefined) body.value = parts[2]; // ej: price:O-00001:5 -> value "5"
 
   const result = await forwardToAppsScript(appsScriptUrl, body);
-  await answerCallbackQuery(botToken, callbackQuery.id, result && result.ok ? undefined : 'Error: ' + (result && result.error));
+  if (!result || result.ok === false) {
+    await sendTelegramMessage(botToken, chatId, '⚠️ Error procesando la acción: ' + (result && result.error), null);
+  }
 }
 
 async function handleReplyMessage(message, appsScriptUrl, botToken) {
