@@ -2027,6 +2027,30 @@ button.pill:hover{ border-color: var(--ink); }
   color: var(--ink);
 }
 .cart-summary .btn{ margin-top: var(--sp-5); }
+.checkout-fields{ margin-top: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-3); }
+.checkout-field label{
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-2);
+  margin-bottom: 4px;
+}
+.checkout-field input{
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-control);
+  padding: 0 var(--sp-3);
+  font-size: 13px;
+  background: var(--paper);
+  box-sizing: border-box;
+}
+.checkout-field input:focus{ outline: none; border-color: var(--ink); }
+.checkout-error{
+  font-size: 12px;
+  color: #c0392b;
+  margin-top: var(--sp-2);
+}
 .coupon-row{
   display: flex;
   gap: var(--sp-2);

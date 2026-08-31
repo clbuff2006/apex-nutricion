@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=17">
+<link rel="stylesheet" href="styles.css?v=18">
 </head>
 <body>
 
@@ -195,75 +195,7 @@
     <div class="cart-layout" id="cart-layout">
 
       <div>
-        <div class="cart-list" id="cart-list">
-
-          <div class="cart-line" data-price="3.44">
-            <div class="cart-line-media">
-              <img class="product-photo" src="assets/going/gel-fresa-banano.png" alt="Gel Energético Going sabor Fresa">
-            </div>
-            <div class="cart-line-info">
-              <p class="cart-line-brand">Going Nutrición</p>
-              <p class="cart-line-name">Gel Energético Fresa</p>
-              <p class="cart-line-variant">Sabor: Fresa</p>
-            </div>
-            <div class="cart-line-qty">
-              <div class="qty-stepper" role="group" aria-label="Cantidad">
-                <button type="button" data-qty-decrease aria-label="Reducir cantidad">−</button>
-                <output>2</output>
-                <button type="button" data-qty-increase aria-label="Aumentar cantidad">+</button>
-              </div>
-            </div>
-            <p class="cart-line-price">$6,88</p>
-            <button type="button" class="cart-line-remove" data-cart-remove aria-label="Eliminar Gel Energético Fresa del carrito">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
-
-          <div class="cart-line" data-price="3.45">
-            <div class="cart-line-media">
-              <img class="product-photo" src="assets/skratch/hidratacion-fresa-limonada-sticks.png" alt="Sport Hydration Drink Mix Skratch Labs sabor Fresa Limonada, sobres">
-            </div>
-            <div class="cart-line-info">
-              <p class="cart-line-brand">Skratch Labs</p>
-              <p class="cart-line-name">Sport Hydration Drink Mix Fresa Limonada</p>
-              <p class="cart-line-variant">Presentación: Sobre individual</p>
-            </div>
-            <div class="cart-line-qty">
-              <div class="qty-stepper" role="group" aria-label="Cantidad">
-                <button type="button" data-qty-decrease aria-label="Reducir cantidad">−</button>
-                <output>3</output>
-                <button type="button" data-qty-increase aria-label="Aumentar cantidad">+</button>
-              </div>
-            </div>
-            <p class="cart-line-price">$10,35</p>
-            <button type="button" class="cart-line-remove" data-cart-remove aria-label="Eliminar Sport Hydration Drink Mix Fresa Limonada del carrito">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
-
-          <div class="cart-line" data-price="4.95">
-            <div class="cart-line-media">
-              <img class="product-photo" src="assets/probar/barra-peanut-butter-chocolate.png" alt="Barra de Proteína Probar sabor Peanut Butter Chocolate">
-            </div>
-            <div class="cart-line-info">
-              <p class="cart-line-brand">Probar</p>
-              <p class="cart-line-name">Barra de Proteína Peanut Butter Chocolate</p>
-              <p class="cart-line-variant">Sabor: Peanut Butter Chocolate</p>
-            </div>
-            <div class="cart-line-qty">
-              <div class="qty-stepper" role="group" aria-label="Cantidad">
-                <button type="button" data-qty-decrease aria-label="Reducir cantidad">−</button>
-                <output>3</output>
-                <button type="button" data-qty-increase aria-label="Aumentar cantidad">+</button>
-              </div>
-            </div>
-            <p class="cart-line-price">$14,85</p>
-            <button type="button" class="cart-line-remove" data-cart-remove aria-label="Eliminar Barra de Proteína Peanut Butter Chocolate del carrito">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
-
-        </div>
+        <div class="cart-list" id="cart-list"></div>
       </div>
 
       <aside class="cart-summary" aria-label="Resumen del pedido">
@@ -282,7 +214,19 @@
           <span id="cart-total">$41,30</span>
         </div>
 
-        <button type="button" class="btn btn--primary btn--block">Proceder al pago</button>
+        <div class="checkout-fields">
+          <div class="checkout-field">
+            <label for="checkout-name">Nombre</label>
+            <input id="checkout-name" type="text" placeholder="Tu nombre completo" autocomplete="name">
+          </div>
+          <div class="checkout-field">
+            <label for="checkout-zone">Zona de despacho</label>
+            <input id="checkout-zone" type="text" placeholder="Ej. Caracas - Chacao" autocomplete="address-line1">
+          </div>
+          <p class="checkout-error" id="checkout-error" hidden></p>
+        </div>
+
+        <button type="button" class="btn btn--primary btn--block" id="checkout-whatsapp">Continuar con el pago</button>
 
         <form class="coupon-row" id="coupon-form">
           <label for="coupon" class="visually-hidden">Código de cupón</label>
@@ -371,6 +315,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=17"></script>
+<script src="app.js?v=18"></script>
 </body>
 </html>

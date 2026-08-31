@@ -1,19 +1,68 @@
 'use strict';
 
-/* Estado en memoria — sin localStorage/sessionStorage */
-const store = {
-  cartCount: 3
-};
+/* ---------- Carrito real (localStorage) ---------- */
+const CART_STORAGE_KEY = 'apex_cart';
+
+function getCart(){
+  try {
+    const raw = localStorage.getItem(CART_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch(e){
+    return [];
+  }
+}
+
+function saveCart(cart){
+  try {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  } catch(e){
+    console.error('No se pudo guardar el carrito: ' + e);
+  }
+}
+
+function cartTotalQty(cart){
+  return cart.reduce(function(sum, item){ return sum + item.quantity; }, 0);
+}
 
 function initCartCount(){
+  const totalQty = cartTotalQty(getCart());
   document.querySelectorAll('[data-cart-count]').forEach(function(el){
-    el.textContent = store.cartCount;
+    el.textContent = totalQty;
   });
 }
 
-function addToCart(amount){
-  store.cartCount += amount || 1;
+/* Lee el producto/precio/foto actuales de la ficha (ya reflejan el sabor/presentación elegidos) y lo agrega al carrito real. */
+function addProductToCart(quantity){
+  const titleEl = document.getElementById('pdp-main-title');
+  const priceEl = document.getElementById('pdp-price');
+  const brandEl = document.querySelector('.pdp-brand');
+  const photoEl = document.getElementById('pdp-main-photo');
+  const unitEl = document.querySelector('.pdp-price-unit');
+  if(!titleEl || !priceEl) return;
+
+  const name = titleEl.textContent.trim();
+  const brand = brandEl ? brandEl.textContent.trim() : '';
+  const photo = photoEl ? photoEl.src : '';
+  const variant = unitEl ? unitEl.textContent.trim() : '';
+  const unitPrice = parseFloat(priceEl.textContent.replace(/[^0-9,.-]/g, '').replace(',', '.')) || 0;
+
+  const cart = getCart();
+  const existing = cart.find(function(item){ return item.name === name && item.brand === brand && item.variant === variant; });
+  if(existing){
+    existing.quantity = Math.min(10, existing.quantity + quantity);
+  } else {
+    cart.push({ name: name, brand: brand, photo: photo, variant: variant, unitPrice: unitPrice, quantity: Math.min(10, quantity) });
+  }
+  saveCart(cart);
   initCartCount();
+}
+
+function escapeHtml(str){
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 /* ---------- Mega menú (escritorio) ---------- */
@@ -87,11 +136,11 @@ function initNewsletterForms(){
   });
 }
 
-/* ---------- Botones "Agregar al carrito" de demostración ---------- */
+/* ---------- Botón "Agregar al carrito" ---------- */
 function initAddToCartButtons(){
   document.querySelectorAll('[data-add-to-cart]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      addToCart(1);
+      addProductToCart(1);
     });
   });
 }
@@ -426,7 +475,7 @@ function initQuantitySteppers(){
 
     const addBtn = document.querySelector('[data-add-to-cart-qty]');
     if(addBtn){
-      addBtn.addEventListener('click', function(){ addToCart(getQty()); });
+      addBtn.addEventListener('click', function(){ addProductToCart(getQty()); });
     }
   });
 }
@@ -485,46 +534,90 @@ function formatPrice(amount){
   return '$' + amount.toFixed(2).replace('.', ',');
 }
 
+const WHATSAPP_NUMBER = '584143695233';
+const FREE_SHIPPING_AT = 30;
+const SHIPPING_COST = 4;
+
+function cartSubtotal(cart){
+  return cart.reduce(function(sum, item){ return sum + item.unitPrice * item.quantity; }, 0);
+}
+
 function initCartPage(){
   const list = document.getElementById('cart-list');
   if(!list) return;
 
-  const lines = Array.from(list.querySelectorAll('.cart-line'));
   const emptyState = document.getElementById('cart-empty');
   const layout = document.getElementById('cart-layout');
   const subtotalEl = document.getElementById('cart-subtotal');
   const shippingEl = document.getElementById('cart-shipping');
   const shippingNoteEl = document.getElementById('cart-shipping-note');
   const totalEl = document.getElementById('cart-total');
-  const FREE_SHIPPING_AT = 30;
-  const SHIPPING_COST = 4;
 
-  function recalculate(){
-    let subtotal = 0;
-    let totalQty = 0;
-    let visibleLines = 0;
+  function render(){
+    const cart = getCart();
 
-    lines.forEach(function(line){
-      if(line.dataset.removed === 'true') return;
-      visibleLines++;
-      const price = parseFloat(line.dataset.price);
-      const qty = parseInt(line.querySelector('output').textContent, 10) || 1;
-      const lineTotal = price * qty;
-      line.querySelector('.cart-line-price').textContent = formatPrice(lineTotal);
-      subtotal += lineTotal;
-      totalQty += qty;
-    });
-
-    if(visibleLines === 0){
+    if(cart.length === 0){
       if(layout) layout.hidden = true;
       if(emptyState) emptyState.hidden = false;
-      store.cartCount = 0;
       initCartCount();
       return;
     }
     if(layout) layout.hidden = false;
     if(emptyState) emptyState.hidden = true;
 
+    list.innerHTML = cart.map(function(item, index){
+      return (
+        '<div class="cart-line" data-index="' + index + '">' +
+          '<div class="cart-line-media">' +
+            '<img class="product-photo" src="' + escapeHtml(item.photo) + '" alt="' + escapeHtml(item.name) + '">' +
+          '</div>' +
+          '<div class="cart-line-info">' +
+            '<p class="cart-line-brand">' + escapeHtml(item.brand) + '</p>' +
+            '<p class="cart-line-name">' + escapeHtml(item.name) + '</p>' +
+            '<p class="cart-line-variant">' + escapeHtml(item.variant) + '</p>' +
+          '</div>' +
+          '<div class="cart-line-qty">' +
+            '<div class="qty-stepper" role="group" aria-label="Cantidad">' +
+              '<button type="button" data-qty-decrease aria-label="Reducir cantidad">−</button>' +
+              '<output>' + item.quantity + '</output>' +
+              '<button type="button" data-qty-increase aria-label="Aumentar cantidad">+</button>' +
+            '</div>' +
+          '</div>' +
+          '<p class="cart-line-price">' + formatPrice(item.unitPrice * item.quantity) + '</p>' +
+          '<button type="button" class="cart-line-remove" data-cart-remove aria-label="Eliminar ' + escapeHtml(item.name) + ' del carrito">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+          '</button>' +
+        '</div>'
+      );
+    }).join('');
+
+    Array.from(list.querySelectorAll('.cart-line')).forEach(function(line){
+      const index = parseInt(line.dataset.index, 10);
+      const decrease = line.querySelector('[data-qty-decrease]');
+      const increase = line.querySelector('[data-qty-increase]');
+      const removeBtn = line.querySelector('[data-cart-remove]');
+
+      if(decrease) decrease.addEventListener('click', function(){
+        const c = getCart();
+        c[index].quantity = Math.max(1, c[index].quantity - 1);
+        saveCart(c);
+        render();
+      });
+      if(increase) increase.addEventListener('click', function(){
+        const c = getCart();
+        c[index].quantity = Math.min(10, c[index].quantity + 1);
+        saveCart(c);
+        render();
+      });
+      if(removeBtn) removeBtn.addEventListener('click', function(){
+        const c = getCart();
+        c.splice(index, 1);
+        saveCart(c);
+        render();
+      });
+    });
+
+    const subtotal = cartSubtotal(cart);
     const shipping = subtotal >= FREE_SHIPPING_AT ? 0 : SHIPPING_COST;
     const total = subtotal + shipping;
 
@@ -541,32 +634,8 @@ function initCartPage(){
       }
     }
 
-    store.cartCount = totalQty;
     initCartCount();
   }
-
-  lines.forEach(function(line){
-    const decrease = line.querySelector('[data-qty-decrease]');
-    const increase = line.querySelector('[data-qty-increase]');
-    const output = line.querySelector('output');
-    const removeBtn = line.querySelector('[data-cart-remove]');
-
-    if(decrease) decrease.addEventListener('click', function(){
-      const qty = Math.max(1, (parseInt(output.textContent, 10) || 1) - 1);
-      output.textContent = String(qty);
-      recalculate();
-    });
-    if(increase) increase.addEventListener('click', function(){
-      const qty = Math.min(10, (parseInt(output.textContent, 10) || 1) + 1);
-      output.textContent = String(qty);
-      recalculate();
-    });
-    if(removeBtn) removeBtn.addEventListener('click', function(){
-      line.dataset.removed = 'true';
-      line.style.display = 'none';
-      recalculate();
-    });
-  });
 
   const couponForm = document.getElementById('coupon-form');
   const couponNote = document.getElementById('coupon-note');
@@ -577,7 +646,71 @@ function initCartPage(){
     });
   }
 
-  recalculate();
+  initCheckoutButton();
+  render();
+}
+
+/* ---------- Botón "Continuar con el pago" -> WhatsApp ---------- */
+function initCheckoutButton(){
+  const btn = document.getElementById('checkout-whatsapp');
+  const nameInput = document.getElementById('checkout-name');
+  const zoneInput = document.getElementById('checkout-zone');
+  const errorEl = document.getElementById('checkout-error');
+  if(!btn) return;
+
+  btn.addEventListener('click', function(){
+    const cart = getCart();
+    if(cart.length === 0) return;
+
+    const customerName = nameInput ? nameInput.value.trim() : '';
+    const location = zoneInput ? zoneInput.value.trim() : '';
+
+    if(!customerName || !location){
+      if(errorEl){
+        errorEl.textContent = 'Por favor completa tu nombre y tu zona de despacho.';
+        errorEl.hidden = false;
+      }
+      if(!customerName && nameInput) nameInput.focus();
+      else if(zoneInput) zoneInput.focus();
+      return;
+    }
+    if(errorEl) errorEl.hidden = true;
+
+    const subtotal = cartSubtotal(cart);
+    const shipping = subtotal >= FREE_SHIPPING_AT ? 0 : SHIPPING_COST;
+    const total = subtotal + shipping;
+
+    const items = cart.map(function(item){
+      return { brand: item.brand, product: item.name, unitPrice: item.unitPrice, quantity: item.quantity };
+    });
+
+    const orderPayload = { customerName: customerName, location: location, total: total, items: items };
+
+    // 1) Registrar el pedido en segundo plano — sendBeacon sigue funcionando aunque la página navegue a WhatsApp.
+    try {
+      navigator.sendBeacon('/.netlify/functions/submit-order', JSON.stringify(orderPayload));
+    } catch(e){
+      console.error('No se pudo registrar el pedido en segundo plano: ' + e);
+    }
+
+    // 2) Abrir WhatsApp de inmediato, sin esperar la respuesta del registro.
+    const lines = cart.map(function(item){
+      return '• ' + item.name + ' x' + item.quantity + ' — ' + formatPrice(item.unitPrice * item.quantity);
+    });
+    const message = 'Hola, quiero hacer este pedido:\n\n' +
+      lines.join('\n') +
+      '\n\nSubtotal: ' + formatPrice(subtotal) +
+      '\nEnvío: ' + (shipping === 0 ? 'Gratis' : formatPrice(shipping)) +
+      '\nTotal: ' + formatPrice(total) +
+      '\n\nNombre: ' + customerName +
+      '\nZona: ' + location;
+
+    const waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+    window.location.href = waUrl;
+
+    // Vaciar el carrito ya que el pedido quedó "enviado" hacia WhatsApp.
+    saveCart([]);
+  });
 }
 
 /* ---------- Carrusel del héroe ---------- */
