@@ -167,15 +167,19 @@ function parseRange(value){
 const CATEGORY_META = {
   hidratacion: {
     title: 'Hidratación',
-    subtitle: 'Electrolitos en polvo, cápsulas y masticables para reponer lo que pierdes por el sudor.',
-  },
-  carbohidratos: {
-    title: 'Carbohidratos',
-    subtitle: 'Geles, gomitas, waffles y barras para sostener el ritmo antes, durante y después del entrenamiento. Filtra por cafeína, carbohidratos y sodio por porción para comparar de verdad.',
+    subtitle: 'Electrolitos en polvo, masticables y cápsulas para reponer lo que pierdes por el sudor.',
   },
   proteina: {
     title: 'Proteína',
-    subtitle: 'Polvos y barras para la ventana de recuperación después de entrenar.',
+    subtitle: 'Polvos de proteína para la ventana de recuperación después de entrenar.',
+  },
+  recuperacion: {
+    title: 'Recuperación',
+    subtitle: 'Barras energéticas para reponer después del esfuerzo.',
+  },
+  'geles-energia': {
+    title: 'Geles y energía',
+    subtitle: 'Geles, waffles y gomas para sostener el ritmo antes, durante y después del entrenamiento. Filtra por cafeína, carbohidratos y sodio por porción para comparar de verdad.',
   },
 };
 
