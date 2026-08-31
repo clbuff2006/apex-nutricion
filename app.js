@@ -197,6 +197,7 @@ function initCategoryFilters(){
 
   const params = new URLSearchParams(window.location.search);
   const activeCategory = params.get('cat');
+  const activeSub = params.get('sub');
   const meta = activeCategory && CATEGORY_META[activeCategory];
 
   const titleEl = document.getElementById('cat-title');
@@ -297,6 +298,17 @@ function initCategoryFilters(){
   }
 
   applyFilters();
+
+  // Si el cliente entró desde un enlace de subcategoría (ej. "Gomas" dentro de Geles y energía),
+  // esos productos se muestran primero, y el resto de la categoría queda debajo.
+  if(activeSub){
+    const prioritized = cards.slice().sort(function(a, b){
+      const aFirst = a.dataset.format === activeSub ? 0 : 1;
+      const bFirst = b.dataset.format === activeSub ? 0 : 1;
+      return aFirst - bFirst;
+    });
+    prioritized.forEach(function(card){ grid.appendChild(card); });
+  }
 }
 
 /* ---------- Tabla nutricional dinámica por sabor ---------- */
