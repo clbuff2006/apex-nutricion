@@ -59,7 +59,7 @@ async function handleCallbackQuery(callbackQuery, appsScriptUrl, botToken) {
   await answerCallbackQuery(botToken, callbackQuery.id);
 
   if (action === 'priceother') {
-    await sendTelegramMessage(botToken, chatId, 'Escribe el monto de delivery para ' + orderId + ':', {
+    await sendTelegramMessage(botToken, chatId, 'Escribe el delivery para ' + orderId + ' (un monto como 8, o una nota como "Coordinar por WhatsApp"):', {
       force_reply: true
     });
     return;
@@ -76,8 +76,8 @@ async function handleCallbackQuery(callbackQuery, appsScriptUrl, botToken) {
 
 async function handleReplyMessage(message, appsScriptUrl, botToken) {
   const originalText = message.reply_to_message.text || '';
-  const match = originalText.match(/para (O-\d+):/);
-  if (!match) return; // no es una respuesta que nos interese (no viene de nuestro prompt "Escribe el monto...")
+  const match = originalText.match(/para (O-\d+)/);
+  if (!match) return; // no es una respuesta que nos interese (no viene de nuestro prompt "Escribe el delivery...")
 
   const orderId = match[1];
   const value = (message.text || '').trim();

@@ -640,7 +640,7 @@ function formatPrice(amount){
 
 const WHATSAPP_NUMBER = '584143695233';
 const FREE_SHIPPING_AT = 30;
-const SHIPPING_COST = 4;
+const SHIPPING_COST = 6;
 
 function cartSubtotal(cart){
   return cart.reduce(function(sum, item){ return sum + item.unitPrice * item.quantity; }, 0);
@@ -743,7 +743,7 @@ function initCartPage(){
     const shippingBsEl = document.getElementById('cart-shipping-bs');
     const totalBsEl = document.getElementById('cart-total-bs');
     if(bcvRate != null){
-      if(rateNoteEl) rateNoteEl.textContent = 'Tasa BCV hoy: Bs ' + formatBsNumber(1) + ' por $1';
+      if(rateNoteEl) rateNoteEl.textContent = 'Tasa BCV: Bs ' + formatBsNumber(1);
       if(subtotalBsEl) subtotalBsEl.textContent = 'Bs ' + formatBsNumber(subtotal);
       if(shippingBsEl) shippingBsEl.textContent = shipping === 0 ? '' : 'Bs ' + formatBsNumber(shipping);
       if(totalBsEl) totalBsEl.textContent = 'Bs ' + formatBsNumber(total);
@@ -828,7 +828,7 @@ function initCheckoutButton(){
       '\n\nSubtotal: ' + formatPrice(subtotal) + bsSuffix(subtotal) +
       '\nEnvío: ' + (shipping === 0 ? 'Gratis' : formatPrice(shipping) + bsSuffix(shipping)) +
       '\nTotal: ' + formatPrice(total) + bsSuffix(total) +
-      (bcvRate != null ? '\n\nTasa BCV: Bs ' + formatBsNumber(1) + ' por $1' : '') +
+      (bcvRate != null ? '\n\nTasa BCV: Bs ' + formatBsNumber(1) : '') +
       '\n\nNombre: ' + customerName +
       '\nZona: ' + location;
 
