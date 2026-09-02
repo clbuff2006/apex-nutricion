@@ -447,6 +447,17 @@ function initPdpFlavorSelector(){
     if(mainTitle) mainTitle.textContent = (mainTitle.dataset.titlePrefix || '') + name;
     if(label) label.textContent = name;
     applyNutrition(matchedOpt);
+    /* Muestra la galería de fotos extra solo del sabor activo, y la reinicia en la primera foto */
+    document.querySelectorAll('[data-photo-gallery-for]').forEach(function(g){
+      const show = g.dataset.photoGalleryFor === name;
+      g.hidden = !show;
+      if(show){
+        Array.from(g.querySelectorAll('.pdp-thumb')).forEach(function(t, i){
+          t.classList.toggle('active', i === 0);
+          t.setAttribute('aria-pressed', String(i === 0));
+        });
+      }
+    });
   }
 
   allOptions.forEach(function(opt){
@@ -460,6 +471,25 @@ function initPdpFlavorSelector(){
     const match = allOptions.find(function(opt){ return opt.dataset.flavorName === urlFlavor; });
     if(match) selectFlavor(match.dataset.flavorName, match.dataset.flavorImg);
   }
+}
+
+/* ---------- Galería de fotos extra (varias fotos del mismo sabor, sin afectar el selector de sabor) ---------- */
+function initPdpPhotoGallery(){
+  const containers = Array.from(document.querySelectorAll('[data-photo-gallery]'));
+  if(containers.length === 0) return;
+  const mainPhoto = document.getElementById('pdp-main-photo');
+  containers.forEach(function(container){
+    const thumbs = Array.from(container.querySelectorAll('.pdp-thumb'));
+    thumbs.forEach(function(thumb){
+      thumb.addEventListener('click', function(){
+        thumbs.forEach(function(t){
+          t.classList.toggle('active', t === thumb);
+          t.setAttribute('aria-pressed', String(t === thumb));
+        });
+        if(mainPhoto && thumb.dataset.photoImg) mainPhoto.src = thumb.dataset.photoImg;
+      });
+    });
+  });
 }
 
 /* ---------- Selector de presentación (precio dinámico en la ficha de producto) ---------- */
@@ -931,6 +961,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initPillGroups();
   initPdpFlavorSelector();
   initPdpGallery();
+  initPdpPhotoGallery();
   initPdpPresentationSelector();
   initQuantitySteppers();
   initArticleFilter();
