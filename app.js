@@ -88,6 +88,18 @@ function injectProductCardBsPrices(){
   });
 }
 
+/* Agrega "≈ Bs ... · Tasa BCV: Bs ..." debajo del precio en la ficha de producto (PDP) */
+function injectPdpBsPrice(){
+  if(bcvRate == null) return;
+  const priceEl = document.getElementById('pdp-price');
+  const bsEl = document.getElementById('pdp-price-bs');
+  if(!priceEl || !bsEl) return;
+  const usd = parsePriceText(priceEl.textContent);
+  const bsFormatted = formatBsNumber(usd);
+  if(bsFormatted == null) return;
+  bsEl.textContent = '≈ Bs ' + bsFormatted + ' · Tasa BCV: Bs ' + formatBsNumber(1);
+}
+
 /* ---------- Carrito real (localStorage) ---------- */
 const CART_STORAGE_KEY = 'apex_cart';
 
@@ -466,6 +478,7 @@ function initPdpPresentationSelector(){
     if(pill.dataset.packageType && window.__pdpGallerySetPackageType){
       window.__pdpGallerySetPackageType(pill.dataset.packageType);
     }
+    injectPdpBsPrice();
   }
 
   options.forEach(function(opt){
@@ -927,6 +940,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   fetchBcvRate().then(function(){
     injectProductCardBsPrices();
+    injectPdpBsPrice();
     if(typeof window.__apexCartRerender === 'function') window.__apexCartRerender();
   });
 });

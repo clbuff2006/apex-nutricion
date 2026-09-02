@@ -1524,6 +1524,7 @@ button.pill:hover{ border-color: var(--ink); }
 }
 .pdp-price{ font-size: 27px; font-weight: 800; color: var(--ink); }
 .pdp-price-unit{ font-size: 14px; color: var(--ink-3); }
+.pdp-price-bs{ font-size: 13px; color: var(--ink-3); margin-top: 4px; }
 .pdp-box-line{
   margin-top: var(--sp-2);
   font-size: 13px;
