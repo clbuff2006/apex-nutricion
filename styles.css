@@ -1492,6 +1492,7 @@ button.pill:hover{ border-color: var(--ink); }
 .pdp-thumb[hidden]{ display: none; }
 .pdp-thumb.active{ border: 1.5px solid var(--ink); }
 .pdp-thumb .product-placeholder{ font-size: 8.5px; border-radius: 3px; }
+.pdp-thumbs--bleed .pdp-thumb{ background: none; padding: 0; overflow: hidden; }
 
 .pdp-info{ padding-top: var(--sp-2); }
 .pdp-brand{
