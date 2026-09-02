@@ -271,6 +271,7 @@ button.pill:hover{ border-color: var(--ink); }
 .logo{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 1px;
   margin-right: var(--sp-2);
   flex-shrink: 0;
@@ -289,6 +290,12 @@ button.pill:hover{ border-color: var(--ink); }
   font-weight: 700;
   color: var(--ink-3);
 }
+.logo-img{
+  height: 34px;
+  width: auto;
+  display: block;
+}
+.footer-about .logo-img{ height: 30px; margin-bottom: var(--sp-3); }
 
 .main-nav{
   flex: 1;
