@@ -1462,6 +1462,11 @@ button.pill:hover{ border-color: var(--ink); }
   align-items: center;
   justify-content: center;
 }
+.pdp-main-image--bleed{
+  background: none;
+  padding: 0;
+  overflow: hidden;
+}
 .pdp-thumbs{
   display: flex;
   flex-wrap: wrap;
