@@ -22,7 +22,8 @@
   --spark:    #D8F24C;
 
   /* Fondo de foto en tarjetas de producto — azul muy claro (The Feed) */
-  --card-media-bg: #EAF1F8;
+  --card-media-bg: #F4F8FC;
+  --card-media-line: #DCDFE5;
 
   /* Semánticos */
   --ok:       #17724a;  --ok-sf:   #e8f2ec;
@@ -818,8 +819,9 @@ button.pill:hover{ border-color: var(--ink); }
   position: relative;
   aspect-ratio: 1;
   background: var(--card-media-bg);
+  border: 1px solid var(--card-media-line);
   border-radius: var(--r-card);
-  padding: 20px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1499,8 +1501,9 @@ button.pill:hover{ border-color: var(--ink); }
 .pdp-main-image{
   aspect-ratio: 1;
   background: var(--card-media-bg);
+  border: 1px solid var(--card-media-line);
   border-radius: var(--r-card);
-  padding: 48px;
+  padding: 24px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1517,9 +1520,9 @@ button.pill:hover{ border-color: var(--ink); }
   width: 72px;
   aspect-ratio: 1;
   border-radius: var(--r-control);
-  border: 1px solid var(--line);
+  border: 1px solid var(--card-media-line);
   background: var(--card-media-bg);
-  padding: 8px;
+  padding: 6px;
   overflow: hidden;
   display: flex;
   align-items: center;
