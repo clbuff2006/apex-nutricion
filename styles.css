@@ -2063,6 +2063,30 @@ button.pill:hover{ border-color: var(--ink); }
   margin: 2px 0 var(--sp-3);
 }
 .summary-note.ok{ color: var(--ok); }
+.pago-movil-box{
+  background: var(--paper-2);
+  border-radius: var(--r-control);
+  padding: var(--sp-4);
+  margin-top: var(--sp-3);
+}
+.pago-movil-title{
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink);
+  margin-bottom: var(--sp-2);
+}
+.pago-movil-list{ margin: 0; }
+.pago-movil-list div{
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: 4px 0;
+  font-size: 13.5px;
+}
+.pago-movil-list dt{ color: var(--ink-3); font-weight: 500; }
+.pago-movil-list dd{ margin: 0; color: var(--ink); font-weight: 600; }
 .summary-total{
   border-top: 1px solid var(--line);
   margin-top: var(--sp-2);
