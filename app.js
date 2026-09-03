@@ -5,7 +5,7 @@
    navegador puede seguir mostrando una copia vieja en caché. Subir este número
    cada vez que se reemplacen fotos de producto fuerza a descargar la versión
    nueva en vez de servir la cacheada. */
-const IMG_V = 3;
+const IMG_V = 4;
 function withImgV(src){
   if(!src) return src;
   return src.split('?')[0] + '?v=' + IMG_V;
