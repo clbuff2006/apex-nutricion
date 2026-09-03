@@ -4,21 +4,21 @@
    ========================================================================== */
 
 :root{
-  /* Tinta */
-  --ink:      #111417;
-  --ink-2:    #4b555e;
-  --ink-3:    #7a848c;
+  /* Tinta — negro cálido */
+  --ink:      #14120F;
+  --ink-2:    #514D48;
+  --ink-3:    #8A857D;
 
-  /* Superficies */
+  /* Superficies — blanco cálido */
   --paper:    #ffffff;
-  --paper-2:  #f7f6f3;
-  --paper-3:  #efede8;
-  --line:     #e5e3de;
+  --paper-2:  #F7F5F1;
+  --paper-3:  #EFEBE3;
+  --line:     #E4DFD5;
 
-  /* Acento */
-  --accent:   #C6482A;
-  --accent-dk:#a2361d;
-  --accent-sf:#fbeee9;
+  /* Acento — coral (The Feed) */
+  --accent:   #FF7A47;
+  --accent-dk:#E35F2E;
+  --accent-sf:#FFEEE5;
 
   /* Semánticos */
   --ok:       #17724a;  --ok-sf:   #e8f2ec;
@@ -33,21 +33,22 @@
   --brand-honey:   #c98a2b;
 
   /* Tipografía */
-  --font-head: 'Archivo', sans-serif;
+  --font-head: 'Anton', sans-serif;
   --font-body: 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
 
   /* Espaciado */
   --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
   --sp-5: 24px; --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px;
 
-  /* Radios */
-  --r-control: 6px;
-  --r-card: 10px;
-  --r-pill: 999px;
+  /* Radios — esquinas rectas */
+  --r-control: 2px;
+  --r-card: 2px;
+  --r-pill: 2px;
 
-  /* Sombra hover */
-  --shadow-hover: 0 12px 30px rgba(17,20,23,.10);
-  --shadow-menu: 0 18px 44px rgba(17,20,23,.13);
+  /* Sin sombra — separación por borde */
+  --shadow-hover: none;
+  --shadow-menu: 0 4px 0 0 var(--ink);
 
   --ease: 140ms ease;
 }
@@ -166,8 +167,8 @@ p{ color: var(--ink-2); }
   transition: background var(--ease), color var(--ease), border-color var(--ease), box-shadow var(--ease);
 }
 .btn--sm{ height: 36px; padding: 0 16px; font-size: 13px; }
-.btn--primary{ background: var(--accent); color: #fff; }
-.btn--primary:hover{ background: var(--accent-dk); }
+.btn--primary{ background: linear-gradient(135deg, #000 0%, #2b2b2b 100%); color: #fff; }
+.btn--primary:hover{ background: linear-gradient(135deg, #000 0%, #000 100%); }
 .btn--ghost{ background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
 .btn--ghost:hover{ border-color: var(--ink); }
 .btn--ghost-light{ background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.4); }
