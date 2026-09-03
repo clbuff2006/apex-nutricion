@@ -1,5 +1,21 @@
 'use strict';
 
+/* ---------- Cache-busting de fotos de producto ----------
+   Los archivos de foto se reemplazan manteniendo el mismo nombre, así que el
+   navegador puede seguir mostrando una copia vieja en caché. Subir este número
+   cada vez que se reemplacen fotos de producto fuerza a descargar la versión
+   nueva en vez de servir la cacheada. */
+const IMG_V = 2;
+function withImgV(src){
+  if(!src) return src;
+  return src.split('?')[0] + '?v=' + IMG_V;
+}
+function initImageCacheBust(){
+  document.querySelectorAll('img[src^="assets/"]').forEach(function(img){
+    img.src = withImgV(img.src);
+  });
+}
+
 /* ---------- Tasa BCV (Banco Central de Venezuela) ---------- */
 const BCV_CACHE_KEY = 'apex_bcv_rate';
 let bcvRate = null; // Bs por $1, null hasta que se obtenga (o si falla)
@@ -442,7 +458,7 @@ function initPdpFlavorSelector(){
       opt.classList.toggle('active', match && opt.classList.contains('pdp-thumb'));
       opt.setAttribute('aria-pressed', String(match));
     });
-    if(mainPhoto && img) mainPhoto.src = img;
+    if(mainPhoto && img) mainPhoto.src = withImgV(img);
     if(mainPhoto && img) mainPhoto.alt = (mainPhoto.dataset.altPrefix || '') + name;
     if(mainTitle) mainTitle.textContent = (mainTitle.dataset.titlePrefix || '') + name;
     if(label) label.textContent = name;
@@ -486,7 +502,7 @@ function initPdpPhotoGallery(){
           t.classList.toggle('active', t === thumb);
           t.setAttribute('aria-pressed', String(t === thumb));
         });
-        if(mainPhoto && thumb.dataset.photoImg) mainPhoto.src = thumb.dataset.photoImg;
+        if(mainPhoto && thumb.dataset.photoImg) mainPhoto.src = withImgV(thumb.dataset.photoImg);
       });
     });
   });
@@ -542,7 +558,7 @@ function initPdpGallery(){
     });
     if(thumb.dataset.galleryType) currentType = thumb.dataset.galleryType;
     if(mainPhoto){
-      mainPhoto.src = thumb.dataset.galleryImg;
+      mainPhoto.src = withImgV(thumb.dataset.galleryImg);
       mainPhoto.alt = thumb.getAttribute('aria-label') || mainPhoto.alt;
     }
   }
@@ -1073,6 +1089,7 @@ function initHeroCarousel(){
 }
 
 document.addEventListener('DOMContentLoaded', function(){
+  initImageCacheBust();
   initCartCount();
   initMegaMenu();
   initMobileMenu();
