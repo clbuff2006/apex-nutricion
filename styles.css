@@ -1510,6 +1510,7 @@ button.pill:hover{ border-color: var(--ink); }
   transition: border-color var(--ease);
 }
 .pdp-thumb[hidden]{ display: none; }
+.pdp-thumbs[hidden]{ display: none; }
 .pdp-thumb.active{ border: 1.5px solid var(--ink); }
 .pdp-thumb .product-placeholder{ font-size: 8.5px; border-radius: 3px; }
 .pdp-thumbs--bleed .pdp-thumb{ background: none; padding: 0; overflow: hidden; }
