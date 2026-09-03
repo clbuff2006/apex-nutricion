@@ -956,7 +956,7 @@ button.pill:hover{ border-color: var(--ink); }
   width: 100%;
   margin-top: var(--sp-3);
   padding: 10px 16px;
-  background: none;
+  background: var(--ink);
   border: 1.5px solid var(--ink);
   border-radius: var(--r-pill);
   font-family: var(--font-mono, monospace);
@@ -964,11 +964,11 @@ button.pill:hover{ border-color: var(--ink); }
   font-weight: 700;
   letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #fff;
   cursor: pointer;
-  transition: background var(--ease), color var(--ease);
+  transition: background var(--ease), opacity var(--ease);
 }
-.product-add-btn:hover{ background: var(--ink); color: #fff; }
+.product-add-btn:hover{ opacity: .85; }
 .product-add-btn.added{ background: var(--ok); border-color: var(--ok); color: #fff; }
 
 /* ==========================================================================
