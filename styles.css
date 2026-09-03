@@ -108,11 +108,11 @@ h1,h2,h3,h4{
   color: var(--ink-3);
 }
 .h-46, .h-36, .h-28, .h-22, .pdp-title{ font-family: var(--font-head); }
-.h-46{ font-size: 46px; letter-spacing: .01em; }
-.h-36{ font-size: 36px; letter-spacing: .01em; }
-.h-28{ font-size: 28px; letter-spacing: .01em; }
-.h-22{ font-size: 22px; letter-spacing: .02em; }
-.h-18{ font-size: 18px; letter-spacing: .02em; }
+.h-46{ font-size: 46px; letter-spacing: .05em; }
+.h-36{ font-size: 36px; letter-spacing: .05em; }
+.h-28{ font-size: 28px; letter-spacing: .05em; }
+.h-22{ font-size: 22px; letter-spacing: .06em; }
+.h-18{ font-size: 18px; letter-spacing: .06em; }
 p{ color: var(--ink-2); }
 
 @media (max-width: 768px){
@@ -809,14 +809,21 @@ button.pill:hover{ border-color: var(--ink); }
 }
 
 .product-card{
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   transition: transform var(--ease);
 }
 .product-card:hover{ transform: translateY(-3px); }
 .product-card:hover .product-card-box{ box-shadow: var(--shadow-hover); }
 
-/* Envuelve la foto (fondo blanco) y la info (fondo azul claro) en una sola línea finita */
+/* Envuelve la foto (fondo blanco) y la info (fondo azul claro) en una sola línea finita.
+   flex-grow hace que todas las cajas de una misma fila terminen a la misma altura,
+   sin importar que un nombre o dato ocupe una línea más que el de al lado. */
 .product-card-box{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
   border: 1px solid var(--card-media-line);
   border-radius: var(--r-card);
   overflow: hidden;
@@ -825,6 +832,7 @@ button.pill:hover{ border-color: var(--ink); }
 .product-media{
   position: relative;
   aspect-ratio: 1;
+  flex: 0 0 auto;
   background: var(--paper);
   padding: 12px;
   display: flex;
@@ -863,7 +871,13 @@ button.pill:hover{ border-color: var(--ink); }
 .pdp-thumb img.product-photo{ border-radius: 3px; }
 .cart-line-media img.product-photo{ border-radius: 3px; }
 
-.product-info{ background: var(--card-media-bg); padding: var(--sp-3) var(--sp-3) var(--sp-4); }
+.product-info{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  background: var(--card-media-bg);
+  padding: var(--sp-3) var(--sp-3) var(--sp-4);
+}
 .product-brand{
   font-size: 10.5px;
   text-transform: uppercase;
@@ -897,7 +911,8 @@ button.pill:hover{ border-color: var(--ink); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: var(--sp-3);
+  margin-top: auto;
+  padding-top: var(--sp-3);
   gap: var(--sp-2);
 }
 .product-price{
@@ -1547,7 +1562,7 @@ button.pill:hover{ border-color: var(--ink); }
 .pdp-title{
   font-size: 31px;
   line-height: 1.15;
-  letter-spacing: .01em;
+  letter-spacing: .05em;
   margin-top: var(--sp-2);
 }
 .pdp-rating{
