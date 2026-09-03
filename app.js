@@ -685,6 +685,17 @@ const WHATSAPP_NUMBER = '584143695233';
 const FREE_SHIPPING_AT = 30;
 const SHIPPING_COST = 6;
 const CARACAS_STATES = ['Distrito Capital'];
+// Miranda solo cuenta como "envío estándar $6" si la zona escrita está cerca de El Hatillo.
+const HATILLO_KEYWORDS = ['hatillo', 'oripoto', 'la lagunita', 'lagunita', 'la boyera', 'boyera', 'loma alta', 'los naranjos', 'la union', 'la unión', 'alto hatillo'];
+
+function normalizeText(s){
+  return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+}
+function isNearHatillo(zoneText){
+  const t = normalizeText(zoneText);
+  if(!t) return false;
+  return HATILLO_KEYWORDS.some(function(kw){ return t.indexOf(normalizeText(kw)) !== -1; });
+}
 
 /* ---------- Tipo de entrega (Pickup / Delivery) ---------- */
 function getDeliveryContext(){
@@ -692,8 +703,10 @@ function getDeliveryContext(){
   const type = activeBtn ? activeBtn.dataset.deliveryType : 'delivery';
   const stateSelect = document.getElementById('checkout-state');
   const state = stateSelect ? stateSelect.value : '';
-  const isCaracas = CARACAS_STATES.indexOf(state) !== -1;
-  return { type: type, state: state, isCaracas: isCaracas };
+  const zoneInput = document.getElementById('checkout-zone');
+  const zoneText = zoneInput ? zoneInput.value : '';
+  const isCaracas = CARACAS_STATES.indexOf(state) !== -1 || (state === 'Miranda' && isNearHatillo(zoneText));
+  return { type: type, state: state, isCaracas: isCaracas, zoneText: zoneText };
 }
 
 function initDeliveryType(){
@@ -716,14 +729,15 @@ function initDeliveryType(){
 
     if(ctx.type === 'delivery'){
       const hasState = ctx.state !== '';
+      const isMiranda = ctx.state === 'Miranda';
       if(caracasNote) caracasNote.hidden = !(hasState && ctx.isCaracas);
       if(mrwNote) mrwNote.hidden = !(hasState && !ctx.isCaracas);
       if(zoneField) zoneField.hidden = !hasState;
       if(zoneLabel){
-        zoneLabel.textContent = ctx.isCaracas ? 'Zona de despacho' : 'Dirección de envío (MRW)';
+        zoneLabel.textContent = (ctx.isCaracas || isMiranda) ? 'Zona de despacho' : 'Dirección de envío (MRW)';
       }
       if(zoneInput){
-        zoneInput.placeholder = ctx.isCaracas ? 'Ej. Caracas - Chacao' : 'Dirección completa, punto de referencia';
+        zoneInput.placeholder = isMiranda ? 'Ej. El Hatillo - Oripoto' : (ctx.isCaracas ? 'Ej. Caracas - Chacao' : 'Dirección completa, punto de referencia');
       }
     }
 
@@ -740,6 +754,9 @@ function initDeliveryType(){
     });
   });
   if(stateSelect) stateSelect.addEventListener('change', refresh);
+  if(zoneInput) zoneInput.addEventListener('input', function(){
+    if(getDeliveryContext().state === 'Miranda') refresh();
+  });
 
   refresh();
 }
@@ -829,7 +846,7 @@ function initCartPage(){
     let shipping;
     if(deliveryCtx.type === 'pickup'){
       shipping = 0;
-    } else if(deliveryCtx.state === ''){
+    } else if(deliveryCtx.state === '' || (deliveryCtx.state === 'Miranda' && deliveryCtx.zoneText.trim() === '')){
       shipping = undefined;
     } else if(deliveryCtx.isCaracas){
       shipping = subtotal >= FREE_SHIPPING_AT ? 0 : SHIPPING_COST;
