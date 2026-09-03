@@ -22,7 +22,7 @@
   --spark:    #D8F24C;
 
   /* Fondo de foto en tarjetas de producto — azul muy claro (The Feed) */
-  --card-media-bg: #F4F8FC;
+  --card-media-bg: #F8FBFE;
   --card-media-line: #DCDFE5;
 
   /* Semánticos */
@@ -813,22 +813,25 @@ button.pill:hover{ border-color: var(--ink); }
   transition: transform var(--ease);
 }
 .product-card:hover{ transform: translateY(-3px); }
-.product-card:hover .product-media{ box-shadow: var(--shadow-hover); }
+.product-card:hover .product-card-box{ box-shadow: var(--shadow-hover); }
 
+/* Envuelve la foto (fondo blanco) y la info (fondo azul claro) en una sola línea finita */
+.product-card-box{
+  border: 1px solid var(--card-media-line);
+  border-radius: var(--r-card);
+  overflow: hidden;
+  transition: box-shadow var(--ease);
+}
 .product-media{
   position: relative;
   aspect-ratio: 1;
-  background: var(--card-media-bg);
-  border: 1px solid var(--card-media-line);
-  border-radius: var(--r-card);
+  background: var(--paper);
   padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: box-shadow var(--ease);
-  overflow: hidden;
 }
-/* .product-media--bleed ya no quita el fondo: todas las tarjetas usan el mismo fondo azul claro */
+/* .product-media--bleed ya no aplica: la foto siempre queda sobre fondo blanco */
 .product-placeholder{
   width: 100%;
   height: 100%;
@@ -860,7 +863,7 @@ button.pill:hover{ border-color: var(--ink); }
 .pdp-thumb img.product-photo{ border-radius: 3px; }
 .cart-line-media img.product-photo{ border-radius: 3px; }
 
-.product-info{ padding-top: var(--sp-3); }
+.product-info{ background: var(--card-media-bg); padding: var(--sp-3) var(--sp-3) var(--sp-4); }
 .product-brand{
   font-size: 10.5px;
   text-transform: uppercase;
