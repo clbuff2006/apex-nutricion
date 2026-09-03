@@ -2100,6 +2100,32 @@ button.pill:hover{ border-color: var(--ink); }
 }
 .pago-movil-list dt{ color: var(--ink-3); font-weight: 500; }
 .pago-movil-list dd{ margin: 0; color: var(--ink); font-weight: 600; }
+
+.delivery-toggle{ display: flex; gap: var(--sp-2); }
+.delivery-toggle-btn{
+  flex: 1;
+  height: 40px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-control);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--paper);
+  transition: border-color var(--ease), background var(--ease), color var(--ease);
+}
+.delivery-toggle-btn:hover{ border-color: var(--ink); }
+.delivery-toggle-btn.active{ background: var(--ink); border-color: var(--ink); color: #fff; }
+.pickup-location{ font-size: 13.5px; color: var(--ink-2); }
+.pickup-location a{ color: var(--accent-dk); text-decoration: underline; text-underline-offset: 2px; }
+#checkout-state{
+  width: 100%;
+  height: 44px;
+  padding: 0 var(--sp-3);
+  border: 1.5px solid var(--line);
+  border-radius: var(--r-control);
+  background: var(--paper);
+  font-size: 14px;
+}
 .summary-total{
   border-top: 1px solid var(--line);
   margin-top: var(--sp-2);

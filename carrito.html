@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=31">
+<link rel="stylesheet" href="styles.css?v=32">
 </head>
 <body>
 
@@ -186,10 +186,58 @@
             <label for="checkout-name">Nombre</label>
             <input id="checkout-name" type="text" placeholder="Tu nombre completo" autocomplete="name">
           </div>
+
           <div class="checkout-field">
-            <label for="checkout-zone">Zona de despacho</label>
-            <input id="checkout-zone" type="text" placeholder="Ej. Caracas - Chacao" autocomplete="address-line1">
+            <label>Tipo de entrega</label>
+            <div class="delivery-toggle" role="group" aria-label="Tipo de entrega">
+              <button type="button" class="delivery-toggle-btn active" data-delivery-type="delivery" aria-pressed="true">Delivery</button>
+              <button type="button" class="delivery-toggle-btn" data-delivery-type="pickup" aria-pressed="false">Pickup</button>
+            </div>
           </div>
+
+          <div class="checkout-field" id="pickup-info" hidden>
+            <p class="pickup-location">Ubicación: <a href="https://maps.app.goo.gl/TbLsaqxRNXJYe4zb9" target="_blank" rel="noopener">Ver en Google Maps</a></p>
+          </div>
+
+          <div id="delivery-fields">
+            <div class="checkout-field">
+              <label for="checkout-state">Estado</label>
+              <select id="checkout-state">
+                <option value="">Selecciona tu estado</option>
+                <option value="Distrito Capital">Distrito Capital (Caracas)</option>
+                <option value="Amazonas">Amazonas</option>
+                <option value="Anzoátegui">Anzoátegui</option>
+                <option value="Apure">Apure</option>
+                <option value="Aragua">Aragua</option>
+                <option value="Barinas">Barinas</option>
+                <option value="Bolívar">Bolívar</option>
+                <option value="Carabobo">Carabobo</option>
+                <option value="Cojedes">Cojedes</option>
+                <option value="Delta Amacuro">Delta Amacuro</option>
+                <option value="Falcón">Falcón</option>
+                <option value="Guárico">Guárico</option>
+                <option value="Lara">Lara</option>
+                <option value="Mérida">Mérida</option>
+                <option value="Miranda">Miranda</option>
+                <option value="Monagas">Monagas</option>
+                <option value="Nueva Esparta">Nueva Esparta</option>
+                <option value="Portuguesa">Portuguesa</option>
+                <option value="Sucre">Sucre</option>
+                <option value="Táchira">Táchira</option>
+                <option value="Trujillo">Trujillo</option>
+                <option value="La Guaira">La Guaira (Vargas)</option>
+                <option value="Yaracuy">Yaracuy</option>
+                <option value="Zulia">Zulia</option>
+              </select>
+            </div>
+            <p class="summary-note ok" id="delivery-caracas-note" hidden>Envío estándar: $6,00 (o gratis desde $30).</p>
+            <p class="summary-note" id="delivery-mrw-note" hidden>Fuera de Caracas el envío es por MRW — se coordina el costo por WhatsApp según tu ubicación.</p>
+            <div class="checkout-field" id="checkout-zone-field">
+              <label for="checkout-zone">Zona de despacho</label>
+              <input id="checkout-zone" type="text" placeholder="Ej. Caracas - Chacao" autocomplete="address-line1">
+            </div>
+          </div>
+
           <p class="checkout-error" id="checkout-error" hidden></p>
         </div>
 
@@ -291,6 +339,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=23"></script>
+<script src="app.js?v=25"></script>
 </body>
 </html>
