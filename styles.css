@@ -1765,6 +1765,11 @@ button.pill:hover{ border-color: var(--ink); }
   color: #fff;
   padding: var(--sp-8) 0;
 }
+.brand-banner--photo{
+  background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), var(--banner-photo);
+  background-size: cover;
+  background-position: center;
+}
 .breadcrumbs--light{ color: rgba(255,255,255,.5); }
 .breadcrumbs--light a{ color: rgba(255,255,255,.7); }
 .breadcrumbs--light a:hover{ color: #fff; }
