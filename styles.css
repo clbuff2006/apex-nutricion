@@ -613,6 +613,41 @@ button.pill:hover{ border-color: var(--ink); }
   .carousel-arrow{ display: none; }
 }
 
+/* Diapositiva Skratch: foto de fondo a toda la sección, en vez del layout foto+copy de las demás */
+.hero-slide--skratch-banner{
+  background-image: url('assets/skratch/resumen-sodio-ancho.png');
+  background-size: cover;
+  background-position: center;
+}
+.hero-slide--skratch-banner .container{
+  grid-template-columns: 1fr;
+  min-height: 480px;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.hero-slide--skratch-banner .hero-actions{
+  position: absolute;
+  left: 0;
+  bottom: var(--sp-8);
+}
+@media (max-width: 1024px){
+  .hero-slide--skratch-banner{
+    background-image: url('assets/skratch/resumen-sodio-movil.png');
+  }
+  .hero-slide--skratch-banner .container{
+    aspect-ratio: 3 / 4;
+    min-height: unset;
+  }
+  .hero-slide--skratch-banner .hero-actions{
+    bottom: var(--sp-5);
+  }
+}
+@media (max-width: 480px){
+  .hero-slide--skratch-banner .hero-actions{ flex-direction: row; }
+  .hero-slide--skratch-banner .hero-actions .btn{ width: auto; }
+}
+
 /* ==========================================================================
    Grilla de promociones
    ========================================================================== */
