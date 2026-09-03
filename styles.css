@@ -1479,9 +1479,10 @@ button.pill:hover{ border-color: var(--ink); }
 
 .pdp-main-image{
   aspect-ratio: 1;
-  background: var(--paper-2);
+  background: none;
   border-radius: var(--r-card);
-  padding: 56px;
+  padding: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1502,8 +1503,9 @@ button.pill:hover{ border-color: var(--ink); }
   aspect-ratio: 1;
   border-radius: var(--r-control);
   border: 1px solid var(--line);
-  background: var(--paper-2);
-  padding: 10px;
+  background: none;
+  padding: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
