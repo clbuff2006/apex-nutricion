@@ -21,6 +21,9 @@
   --accent-sf:#FFEEE5;
   --spark:    #D8F24C;
 
+  /* Fondo de foto en tarjetas de producto — azul muy claro (The Feed) */
+  --card-media-bg: #EAF1F8;
+
   /* Semánticos */
   --ok:       #17724a;  --ok-sf:   #e8f2ec;
   --warn:     #8a6510;  --warn-sf: #fbf3dd;
@@ -126,7 +129,7 @@ p{ color: var(--ink-2); }
   padding: 64px 0;
 }
 .section--tight{ padding: 48px 0; }
-.section--alt{ background: var(--paper-2); }
+.section--alt{ background: var(--paper); }
 .section--ink{ background: var(--ink); color: #fff; }
 .section--ink p{ color: rgba(255,255,255,.68); }
 
@@ -814,19 +817,16 @@ button.pill:hover{ border-color: var(--ink); }
 .product-media{
   position: relative;
   aspect-ratio: 1;
-  background: none;
+  background: var(--card-media-bg);
   border-radius: var(--r-card);
-  padding: 0;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: box-shadow var(--ease);
   overflow: hidden;
 }
-.product-media--bleed{
-  background: none;
-  padding: 0;
-}
+/* .product-media--bleed ya no quita el fondo: todas las tarjetas usan el mismo fondo azul claro */
 .product-placeholder{
   width: 100%;
   height: 100%;
@@ -931,6 +931,25 @@ button.pill:hover{ border-color: var(--ink); }
 }
 .product-rating svg{ width: 13px; height: 13px; color: var(--accent); }
 .product-rating .count{ color: var(--ink-3); }
+.product-add-btn{
+  display: block;
+  width: 100%;
+  margin-top: var(--sp-3);
+  padding: 10px 16px;
+  background: none;
+  border: 1.5px solid var(--ink);
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease);
+}
+.product-add-btn:hover{ background: var(--ink); color: #fff; }
+.product-add-btn.added{ background: var(--ok); border-color: var(--ok); color: #fff; }
 
 /* ==========================================================================
    Cinco marcas (fondo oscuro)
@@ -1479,19 +1498,15 @@ button.pill:hover{ border-color: var(--ink); }
 
 .pdp-main-image{
   aspect-ratio: 1;
-  background: none;
+  background: var(--card-media-bg);
   border-radius: var(--r-card);
-  padding: 0;
+  padding: 48px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.pdp-main-image--bleed{
-  background: none;
-  padding: 0;
-  overflow: hidden;
-}
+/* .pdp-main-image--bleed ya no quita el fondo: todas las fichas usan el mismo fondo azul claro */
 .pdp-thumbs{
   display: flex;
   flex-wrap: wrap;
@@ -1503,8 +1518,8 @@ button.pill:hover{ border-color: var(--ink); }
   aspect-ratio: 1;
   border-radius: var(--r-control);
   border: 1px solid var(--line);
-  background: none;
-  padding: 0;
+  background: var(--card-media-bg);
+  padding: 8px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1515,7 +1530,7 @@ button.pill:hover{ border-color: var(--ink); }
 .pdp-thumbs[hidden]{ display: none; }
 .pdp-thumb.active{ border: 1.5px solid var(--ink); }
 .pdp-thumb .product-placeholder{ font-size: 8.5px; border-radius: 3px; }
-.pdp-thumbs--bleed .pdp-thumb{ background: none; padding: 0; overflow: hidden; }
+/* .pdp-thumbs--bleed ya no quita el fondo: todas las miniaturas usan el mismo fondo azul claro */
 
 .pdp-info{ padding-top: var(--sp-2); }
 .pdp-brand{

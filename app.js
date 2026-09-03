@@ -147,6 +147,19 @@ function initCartCount(){
   });
 }
 
+/* Agrega un producto al carrito real, combinando cantidad si ya existe la misma variante. */
+function addItemToCart(item){
+  const cart = getCart();
+  const existing = cart.find(function(c){ return c.name === item.name && c.brand === item.brand && c.variant === item.variant; });
+  if(existing){
+    existing.quantity = Math.min(10, existing.quantity + item.quantity);
+  } else {
+    cart.push({ name: item.name, brand: item.brand, photo: item.photo, variant: item.variant, unitPrice: item.unitPrice, quantity: Math.min(10, item.quantity) });
+  }
+  saveCart(cart);
+  initCartCount();
+}
+
 /* Lee el producto/precio/foto actuales de la ficha (ya reflejan el sabor/presentación elegidos) y lo agrega al carrito real. */
 function addProductToCart(quantity){
   const titleEl = document.getElementById('pdp-main-title');
@@ -156,21 +169,48 @@ function addProductToCart(quantity){
   const unitEl = document.querySelector('.pdp-price-unit');
   if(!titleEl || !priceEl) return;
 
-  const name = titleEl.textContent.trim();
-  const brand = brandEl ? brandEl.textContent.trim() : '';
-  const photo = photoEl ? photoEl.src : '';
-  const variant = unitEl ? unitEl.textContent.trim() : '';
-  const unitPrice = parseFloat(priceEl.textContent.replace(/[^0-9,.-]/g, '').replace(',', '.')) || 0;
+  addItemToCart({
+    name: titleEl.textContent.trim(),
+    brand: brandEl ? brandEl.textContent.trim() : '',
+    photo: photoEl ? photoEl.src : '',
+    variant: unitEl ? unitEl.textContent.trim() : '',
+    unitPrice: parseFloat(priceEl.textContent.replace(/[^0-9,.-]/g, '').replace(',', '.')) || 0,
+    quantity: quantity
+  });
+}
 
-  const cart = getCart();
-  const existing = cart.find(function(item){ return item.name === name && item.brand === brand && item.variant === variant; });
-  if(existing){
-    existing.quantity = Math.min(10, existing.quantity + quantity);
-  } else {
-    cart.push({ name: name, brand: brand, photo: photo, variant: variant, unitPrice: unitPrice, quantity: Math.min(10, quantity) });
-  }
-  saveCart(cart);
-  initCartCount();
+/* Lee el producto/precio/foto de una tarjeta de catálogo y lo agrega al carrito real. */
+function addCardToCart(card){
+  if(!card) return;
+  const nameEl = card.querySelector('.product-name');
+  const priceEl = card.querySelector('.product-price');
+  const brandEl = card.querySelector('.product-brand');
+  const photoEl = card.querySelector('.product-photo');
+  if(!nameEl || !priceEl) return;
+
+  addItemToCart({
+    name: nameEl.textContent.trim(),
+    brand: brandEl ? brandEl.textContent.trim() : '',
+    photo: photoEl ? photoEl.src : '',
+    variant: '',
+    unitPrice: parsePriceText(priceEl.textContent) || 0,
+    quantity: 1
+  });
+}
+
+/* ---------- Botón "Agregar al carrito" en las tarjetas de catálogo ---------- */
+function initCardAddToCartButtons(){
+  document.querySelectorAll('[data-add-to-cart-card]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      addCardToCart(btn.closest('.product-card'));
+      btn.classList.add('added');
+      const label = btn.textContent;
+      btn.textContent = 'Agregado ✓';
+      setTimeout(function(){ btn.textContent = label; btn.classList.remove('added'); }, 1400);
+    });
+  });
 }
 
 function escapeHtml(str){
@@ -1095,6 +1135,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initMobileMenu();
   initNewsletterForms();
   initAddToCartButtons();
+  initCardAddToCartButtons();
   initFiltersToggle();
   initCategoryFilters();
   initPillGroups();
