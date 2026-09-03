@@ -84,9 +84,13 @@ summary:focus-visible,
   border-radius: var(--r-control);
 }
 
-/* ---------- Tipografía ---------- */
+/* ---------- Tipografía ----------
+   Anton (--font-head) es una fuente de display: solo se usa en títulos
+   grandes de verdad (.h-46/.h-36/.h-28 y similares). El resto de los
+   h1-h4 (nombres de producto en tarjetas, "Resumen del pedido", columnas
+   del footer, etc.) se queda en la tipografía de cuerpo — Anton a 14px
+   se vuelve ilegible. */
 h1,h2,h3,h4{
-  font-family: var(--font-head);
   font-weight: 700;
   line-height: 1.15;
   color: var(--ink);
@@ -98,6 +102,7 @@ h1,h2,h3,h4{
   font-weight: 700;
   color: var(--ink-3);
 }
+.h-46, .h-36, .h-28, .h-22, .pdp-title{ font-family: var(--font-head); }
 .h-46{ font-size: 46px; letter-spacing: -.03em; }
 .h-36{ font-size: 36px; letter-spacing: -.03em; }
 .h-28{ font-size: 28px; letter-spacing: -.03em; }
