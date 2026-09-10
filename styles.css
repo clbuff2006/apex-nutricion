@@ -737,6 +737,14 @@ button.pill:hover{ border-color: var(--ink); }
   margin-top: 6px;
   max-width: 320px;
 }
+.promo-tile-logos{
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  margin-top: 12px;
+  mix-blend-mode: screen;
+}
 
 @media (max-width: 1024px){
   .promo-grid{ grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
