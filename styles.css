@@ -672,7 +672,7 @@ button.pill:hover{ border-color: var(--ink); }
 }
 .promo-tile:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 .promo-tile--wide{ grid-column: span 2; }
-.promo-tile--graphic{ background: #fff; padding: 0; }
+.promo-tile--graphic{ background: #fff; padding: 0; border: 1px solid var(--card-media-line); }
 .promo-tile--graphic .promo-tile-graphic-img{
   position: absolute;
   inset: 0;
