@@ -681,6 +681,10 @@ button.pill:hover{ border-color: var(--ink); }
   object-fit: contain;
   object-position: center;
 }
+.promo-tile--wide.promo-tile--graphic .promo-tile-graphic-img{
+  object-fit: cover;
+  object-position: center top;
+}
 .promo-tile-bg{
   position: absolute;
   inset: 0;
