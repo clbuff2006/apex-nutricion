@@ -455,15 +455,34 @@ function initCategoryFilters(){
 
   applyFilters();
 
-  // Si el cliente entró desde un enlace de subcategoría (ej. "Gomas" dentro de Geles y energía),
-  // esos productos se muestran primero, y el resto de la categoría queda debajo.
+  // Si el cliente entró desde un enlace de subcategoría (ej. "Geles" dentro de Geles y energía),
+  // esos productos se muestran primero —intercalados por marca (Going, Honey, Going, Honey…)—
+  // y el resto de la categoría queda debajo.
   if(activeSub){
-    const prioritized = cards.slice().sort(function(a, b){
-      const aFirst = a.dataset.format === activeSub ? 0 : 1;
-      const bFirst = b.dataset.format === activeSub ? 0 : 1;
-      return aFirst - bFirst;
+    const matching = [];
+    const rest = [];
+    cards.forEach(function(card){
+      (card.dataset.format === activeSub ? matching : rest).push(card);
     });
-    prioritized.forEach(function(card){ grid.appendChild(card); });
+
+    const byBrand = {};
+    const brandOrder = [];
+    matching.forEach(function(card){
+      const b = card.dataset.brand || '';
+      if(!byBrand[b]){ byBrand[b] = []; brandOrder.push(b); }
+      byBrand[b].push(card);
+    });
+
+    const interleaved = [];
+    let pulled = true;
+    while(pulled){
+      pulled = false;
+      brandOrder.forEach(function(b){
+        if(byBrand[b].length){ interleaved.push(byBrand[b].shift()); pulled = true; }
+      });
+    }
+
+    interleaved.concat(rest).forEach(function(card){ grid.appendChild(card); });
   }
 }
 
