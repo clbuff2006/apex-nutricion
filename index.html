@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=55">
+<link rel="stylesheet" href="styles.css?v=56">
 </head>
 <body>
 
@@ -247,7 +247,10 @@
         </a>
 
         <a class="promo-tile promo-tile--wide promo-tile--graphic promo-tile--flat" href="categoria.html">
-          <img class="promo-tile-graphic-img" src="assets/going/banner-pack-geles.png" alt="Arma tu pack de geles Going — elige entre café, fresa banano, granada y guayaba; gel energético de 33 g hecho con miel de café y vitaminas del complejo B">
+          <picture class="promo-tile-graphic-img">
+            <source media="(max-width: 640px)" srcset="assets/going/banner-pack-geles-movil.png">
+            <img src="assets/going/banner-pack-geles.png" alt="Arma tu pack de geles Going — elige entre café, fresa banano, granada y guayaba; gel energético de 33 g hecho con miel de café y vitaminas del complejo B">
+          </picture>
         </a>
 
         <a class="promo-tile promo-tile--wide" href="marcas.html" style="background:linear-gradient(160deg, #1c1206 0%, #12181d 60%);">
@@ -724,6 +727,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=40"></script>
+<script src="app.js?v=41"></script>
 </body>
 </html>
