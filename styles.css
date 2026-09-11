@@ -648,6 +648,38 @@ button.pill:hover{ border-color: var(--ink); }
   .hero-slide--skratch-banner .hero-actions .btn{ width: auto; }
 }
 
+/* Diapositiva SaltStick Cápsulas: mismo patrón, gráfico propio a todo el fondo */
+.hero-slide--capsulas-banner{
+  background-image: url('assets/saltstick/hero-capsulas-ancho.png');
+  background-size: cover;
+  background-position: center;
+}
+.hero-slide--capsulas-banner .container{
+  grid-template-columns: 1fr;
+  min-height: 480px;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.hero-slide--capsulas-banner .hero-actions{
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-8);
+  transform: translateX(-50%);
+}
+@media (max-width: 1024px){
+  .hero-slide--capsulas-banner{
+    background-image: url('assets/saltstick/hero-capsulas-movil.png');
+  }
+  .hero-slide--capsulas-banner .container{
+    aspect-ratio: 3 / 4;
+    min-height: unset;
+  }
+  .hero-slide--capsulas-banner .hero-actions{
+    bottom: var(--sp-5);
+  }
+}
+
 /* ==========================================================================
    Grilla de promociones
    ========================================================================== */
