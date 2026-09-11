@@ -21,7 +21,8 @@ exports.handler = async function (event) {
   }
 
   const rating = Number(payload && payload.rating);
-  if (!payload || !payload.product || !rating || rating < 1 || rating > 5) {
+  const name = payload && typeof payload.name === 'string' ? payload.name.trim() : '';
+  if (!payload || !payload.product || !rating || rating < 1 || rating > 5 || !name) {
     return { statusCode: 400, body: JSON.stringify({ ok: false, error: 'Invalid review payload' }) };
   }
 

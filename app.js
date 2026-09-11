@@ -1184,6 +1184,9 @@ function initReviewForm(){
       if(errorEl) errorEl.hidden = true;
 
       const rating = Number(ratingInput.value);
+      const nameInput = form.querySelector('input[name="name"]');
+      const nameValue = nameInput ? nameInput.value.trim() : '';
+
       if(!rating){
         if(errorEl){
           errorEl.textContent = 'Selecciona una calificación de estrellas.';
@@ -1191,10 +1194,17 @@ function initReviewForm(){
         }
         return;
       }
+      if(!nameValue){
+        if(errorEl){
+          errorEl.textContent = 'Escribe tu nombre para poder enviar la reseña.';
+          errorEl.hidden = false;
+        }
+        if(nameInput) nameInput.focus();
+        return;
+      }
 
       const titleEl = document.getElementById('pdp-main-title');
       const brandEl = document.querySelector('.pdp-brand');
-      const nameInput = form.querySelector('input[name="name"]');
       const reviewInput = form.querySelector('textarea[name="review"]');
 
       const payload = {
@@ -1202,7 +1212,7 @@ function initReviewForm(){
         brand: brandEl ? brandEl.textContent.trim() : '',
         rating: rating,
         review: reviewInput ? reviewInput.value.trim() : '',
-        name: nameInput ? nameInput.value.trim() : '',
+        name: nameValue,
         url: window.location.href
       };
 
