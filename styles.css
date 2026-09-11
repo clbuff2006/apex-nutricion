@@ -1195,7 +1195,7 @@ button.pill:hover{ border-color: var(--ink); }
 }
 .feature-media{
   aspect-ratio: 1;
-  background: var(--paper-2);
+  background: #fff;
   border-radius: var(--r-card);
   padding: 56px;
   display: flex;
