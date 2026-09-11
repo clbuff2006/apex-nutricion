@@ -1155,6 +1155,84 @@ function initHeroCarousel(){
   startAutoplay();
 }
 
+/* ---------- Formulario real de calificación y reseña de producto ----------
+   Reemplaza los ratings/reseñas inventados. Cada envío se manda a la función
+   de Netlify submit-review, que lo reenvía a Google Apps Script para que quede
+   guardado en una hoja de cálculo — no se muestra en el sitio todavía. */
+function initReviewForm(){
+  document.querySelectorAll('[data-review-form]').forEach(function(form){
+    const starButtons = Array.from(form.querySelectorAll('.star-btn'));
+    const ratingInput = form.querySelector('[data-star-value-input]');
+    const successEl = form.querySelector('[data-review-success]');
+    const errorEl = form.querySelector('[data-review-error]');
+    const submitBtn = form.querySelector('[data-review-submit]');
+
+    function setRating(value){
+      ratingInput.value = value || '';
+      starButtons.forEach(function(btn){
+        btn.classList.toggle('active', Number(btn.dataset.starValue) <= value);
+      });
+    }
+
+    starButtons.forEach(function(btn){
+      btn.addEventListener('click', function(){ setRating(Number(btn.dataset.starValue)); });
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(successEl) successEl.hidden = true;
+      if(errorEl) errorEl.hidden = true;
+
+      const rating = Number(ratingInput.value);
+      if(!rating){
+        if(errorEl){
+          errorEl.textContent = 'Selecciona una calificación de estrellas.';
+          errorEl.hidden = false;
+        }
+        return;
+      }
+
+      const titleEl = document.getElementById('pdp-main-title');
+      const brandEl = document.querySelector('.pdp-brand');
+      const nameInput = form.querySelector('input[name="name"]');
+      const reviewInput = form.querySelector('textarea[name="review"]');
+
+      const payload = {
+        product: titleEl ? titleEl.textContent.trim() : document.title,
+        brand: brandEl ? brandEl.textContent.trim() : '',
+        rating: rating,
+        review: reviewInput ? reviewInput.value.trim() : '',
+        name: nameInput ? nameInput.value.trim() : '',
+        url: window.location.href
+      };
+
+      if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Enviando…'; }
+
+      fetch('/.netlify/functions/submit-review', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function(res){
+          return res.json().catch(function(){ return {}; }).then(function(data){ return { ok: res.ok, data: data }; });
+        })
+        .then(function(result){
+          if(!result.ok || result.data.ok === false){ throw new Error((result.data && result.data.error) || 'Error de envío'); }
+          if(successEl) successEl.hidden = false;
+          form.reset();
+          setRating(0);
+        })
+        .catch(function(err){
+          console.error('[review-form] ' + err);
+          if(errorEl) errorEl.hidden = false;
+        })
+        .finally(function(){
+          if(submitBtn){ submitBtn.disabled = false; submitBtn.textContent = 'Enviar calificación'; }
+        });
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function(){
   initImageCacheBust();
   initCartCount();
@@ -1175,6 +1253,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initArticleToc();
   initCartPage();
   initHeroCarousel();
+  initReviewForm();
 
   fetchBcvRate().then(function(){
     injectProductCardBsPrices();
