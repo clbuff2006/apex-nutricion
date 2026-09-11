@@ -1041,7 +1041,7 @@ function initCheckoutButton(){
 
     // 1) Registrar el pedido en segundo plano — sendBeacon sigue funcionando aunque la página navegue a WhatsApp.
     try {
-      navigator.sendBeacon('/.netlify/functions/submit-order', JSON.stringify(orderPayload));
+      navigator.sendBeacon('/api/submit-order', JSON.stringify(orderPayload));
     } catch(e){
       console.error('No se pudo registrar el pedido en segundo plano: ' + e);
     }
@@ -1218,7 +1218,7 @@ function initReviewForm(){
 
       if(submitBtn){ submitBtn.disabled = true; submitBtn.textContent = 'Enviando…'; }
 
-      fetch('/.netlify/functions/submit-review', {
+      fetch('/api/submit-review', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

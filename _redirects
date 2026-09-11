@@ -1,0 +1,4 @@
+# Mapea las rutas /api/* (usadas por el frontend, compatibles con Cloudflare Pages Functions)
+# a las funciones de Netlify existentes, para que el mismo código funcione en ambas plataformas.
+/api/submit-order   /.netlify/functions/submit-order   200
+/api/submit-review  /.netlify/functions/submit-review  200
