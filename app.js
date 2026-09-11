@@ -1089,6 +1089,14 @@ function initHeroCarousel(){
   const dotsWrap = root.querySelector('.carousel-dots');
   const prevBtn = root.querySelector('.carousel-arrow--prev');
   const nextBtn = root.querySelector('.carousel-arrow--next');
+
+  /* Con una sola diapositiva no hay nada que recorrer: se ocultan flechas y puntos. */
+  if(slides.length <= 1){
+    if(dotsWrap) dotsWrap.hidden = true;
+    if(prevBtn) prevBtn.hidden = true;
+    if(nextBtn) nextBtn.hidden = true;
+  }
+
   const AUTOPLAY_MS = 6000;
   const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let index = slides.findIndex(function(s){ return s.classList.contains('active'); });

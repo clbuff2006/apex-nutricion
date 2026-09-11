@@ -574,6 +574,7 @@ button.pill:hover{ border-color: var(--ink); }
   z-index: 5;
   transition: background var(--ease);
 }
+.carousel-arrow[hidden]{ display: none; }
 .carousel-arrow:hover{ background: rgba(255,255,255,.22); }
 .carousel-arrow svg{ width: 20px; height: 20px; }
 .carousel-arrow--prev{ left: var(--sp-5); }
@@ -589,6 +590,7 @@ button.pill:hover{ border-color: var(--ink); }
   gap: var(--sp-2);
   z-index: 5;
 }
+.carousel-dots[hidden]{ display: none; }
 .carousel-dot{
   width: 8px;
   height: 8px;
